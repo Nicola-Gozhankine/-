@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace Служба_доставки
 {
@@ -38,6 +39,10 @@ namespace Служба_доставки
 
         private void button1_Click(object sender, EventArgs e)
         {
+            string filePath = "Log.txt";
+            string fileContents = File.ReadAllText(filePath);
+            textBox3.Text = fileContents;
+
 
         }
     }
