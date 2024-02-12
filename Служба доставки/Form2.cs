@@ -31,5 +31,18 @@ namespace Служба_доставки
         {
 
         }
+
+        private void Form2_Load(object sender, EventArgs e)
+        {
+            List<UserControl1> panel = new List<UserControl1>();  
+
+            for (int i = 0; i < 5; i++)
+            {
+                UserControl1 users = new UserControl1();
+                users.Location = new Point(5, i*users.Size.Height);
+                panel.Add(users);
+                panel1.Controls.Add(panel[i]);
+            }
+        }
     }
 }

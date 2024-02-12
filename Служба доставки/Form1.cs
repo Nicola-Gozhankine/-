@@ -40,7 +40,7 @@ namespace Служба_доставки
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string filePath = "Log.txt";
+            string filePath = "C:/Users/Asus/source/repos/Nicola-Gozhankine/-/Служба доставки/bin/Debug/Log.txt";
             string[] lines = File.ReadAllLines(filePath);
 
             string введенныйЛогин = textBoxLogin.Text;
