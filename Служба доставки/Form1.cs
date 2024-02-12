@@ -75,5 +75,10 @@ namespace Служба_доставки
                 else MessageBox.Show("Not");
             }
         }
+
+        private void comboBoxRole_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

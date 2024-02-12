@@ -92,12 +92,14 @@
             "Упаковшик "});
             this.comboBoxRole.FormattingEnabled = true;
             this.comboBoxRole.Items.AddRange(new object[] {
-            "Менеджер ",
-            "Повар"});
+            "менеджер",
+            "повар",
+            "упаковщик"});
             this.comboBoxRole.Location = new System.Drawing.Point(258, 138);
             this.comboBoxRole.Name = "comboBoxRole";
             this.comboBoxRole.Size = new System.Drawing.Size(138, 21);
             this.comboBoxRole.TabIndex = 5;
+            this.comboBoxRole.SelectedIndexChanged += new System.EventHandler(this.comboBoxRole_SelectedIndexChanged);
             // 
             // label3
             // 
