@@ -19,7 +19,20 @@ namespace Служба_доставки
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
+            this.Hide();
+            Form2 form = new Form2();
+            form.Show();
+
+        }
+
+        private void Form3_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void Form3_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

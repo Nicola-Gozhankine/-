@@ -74,11 +74,11 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(33, 191);
+            this.button1.Location = new System.Drawing.Point(33, 188);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 4;
-            this.button1.Text = "button1";
+            this.button1.Text = "Выход";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -94,6 +94,8 @@
             this.Controls.Add(this.label1);
             this.Name = "Form3";
             this.Text = "Курьер";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form3_FormClosed);
+            this.Load += new System.EventHandler(this.Form3_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
