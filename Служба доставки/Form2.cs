@@ -39,10 +39,15 @@ namespace Служба_доставки
             for (int i = 0; i < 5; i++)
             {
                 UserControl1 users = new UserControl1();
-                users.Location = new Point(5, i*users.Size.Height);
+                users.Location = new Point(users.Size.Width, i*users.Size.Height);
                 panel.Add(users);
                 panel1.Controls.Add(panel[i]);
             }
+        }
+
+        private void Form2_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

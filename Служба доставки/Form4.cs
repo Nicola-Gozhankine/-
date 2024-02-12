@@ -16,5 +16,10 @@ namespace Служба_доставки
         {
             InitializeComponent();
         }
+
+        private void Form4_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }
