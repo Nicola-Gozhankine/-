@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.button1 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBoxPassword = new System.Windows.Forms.TextBox();
+            this.textBoxLogin = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.comboBoxRole = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
@@ -49,19 +49,19 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // textBox1
+            // textBoxPassword
             // 
-            this.textBox1.Location = new System.Drawing.Point(207, 282);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(266, 20);
-            this.textBox1.TabIndex = 1;
+            this.textBoxPassword.Location = new System.Drawing.Point(207, 282);
+            this.textBoxPassword.Name = "textBoxPassword";
+            this.textBoxPassword.Size = new System.Drawing.Size(266, 20);
+            this.textBoxPassword.TabIndex = 1;
             // 
-            // textBox2
+            // textBoxLogin
             // 
-            this.textBox2.Location = new System.Drawing.Point(207, 209);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(266, 20);
-            this.textBox2.TabIndex = 2;
+            this.textBoxLogin.Location = new System.Drawing.Point(207, 209);
+            this.textBoxLogin.Name = "textBoxLogin";
+            this.textBoxLogin.Size = new System.Drawing.Size(266, 20);
+            this.textBoxLogin.TabIndex = 2;
             // 
             // label1
             // 
@@ -84,17 +84,20 @@
             this.label2.TabIndex = 4;
             this.label2.Text = "Пароль ";
             // 
-            // comboBox1
+            // comboBoxRole
             // 
-            this.comboBox1.AutoCompleteCustomSource.AddRange(new string[] {
+            this.comboBoxRole.AutoCompleteCustomSource.AddRange(new string[] {
             "Повар ",
             "Менеджер ",
             "Упаковшик "});
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(258, 138);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(138, 21);
-            this.comboBox1.TabIndex = 5;
+            this.comboBoxRole.FormattingEnabled = true;
+            this.comboBoxRole.Items.AddRange(new object[] {
+            "Менеджер ",
+            "Повар"});
+            this.comboBoxRole.Location = new System.Drawing.Point(258, 138);
+            this.comboBoxRole.Name = "comboBoxRole";
+            this.comboBoxRole.Size = new System.Drawing.Size(138, 21);
+            this.comboBoxRole.TabIndex = 5;
             // 
             // label3
             // 
@@ -122,11 +125,11 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.comboBoxRole);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.textBoxLogin);
+            this.Controls.Add(this.textBoxPassword);
             this.Controls.Add(this.button1);
             this.Name = "Form1";
             this.Text = "Авторизация ";
@@ -139,11 +142,11 @@
         #endregion
 
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBoxPassword;
+        private System.Windows.Forms.TextBox textBoxLogin;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox comboBoxRole;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox textBox3;
     }

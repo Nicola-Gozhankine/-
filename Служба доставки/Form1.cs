@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using static System.Windows.Forms.LinkLabel;
 
 namespace Служба_доставки
 {
@@ -20,8 +21,8 @@ namespace Служба_доставки
 
         private void Form1_Load(object sender, EventArgs e)
         {
-              
-              
+
+
 
         }
 
@@ -40,10 +41,39 @@ namespace Служба_доставки
         private void button1_Click(object sender, EventArgs e)
         {
             string filePath = "Log.txt";
-            string fileContents = File.ReadAllText(filePath);
-            textBox3.Text = fileContents;
+            string[] lines = File.ReadAllLines(filePath);
 
+            string введенныйЛогин = textBoxLogin.Text;
+            string введенныйПароль = textBoxPassword.Text;
+            string выбраннаяРоль = comboBoxRole.SelectedItem.ToString();
 
+            foreach (string line in lines)
+            {
+                string[] данные = line.Split(','); // Предполагается, что данные в файле разделены запятой
+
+                string логин = данные[0];
+                string пароль = данные[1];
+                string роль = данные[2];
+
+                if (введенныйЛогин == логин && введенныйПароль == пароль && выбраннаяРоль == роль)
+                {
+                    // Выполнение кода, если сочетание логина, пароля и роли соответствует данным из файла
+                    if (роль == "менеджер")
+                    {
+                        // Обработка, если роль соответствует "менеджеру"
+                    }
+                    else if (роль == "повар")
+                    {
+                        // Обработка, если роль соответствует "повару"
+                    }
+                    else if (роль == "упаковщик")
+                    {
+                        // Обработка, если роль соответствует "упаковщику"
+                    }
+                   
+                }
+                else MessageBox.Show("Not");
+            }
         }
     }
 }
