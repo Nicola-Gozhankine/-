@@ -61,23 +61,38 @@ namespace Служба_доставки
                     if (роль == "менеджер")
                     {
                         // Обработка, если роль соответствует "менеджеру"
+                        MessageBox.Show("Вы вошли как " +  роль );
                     }
                     else if (роль == "повар")
                     {
                         // Обработка, если роль соответствует "повару"
+                        MessageBox.Show("Вы вошли как " + роль);
                     }
                     else if (роль == "упаковщик")
                     {
                         // Обработка, если роль соответствует "упаковщику"
+                        MessageBox.Show("Вы вошли как " + роль);
                     }
                    
                 }
-                else MessageBox.Show("Not");
+              //  else MessageBox.Show("Not");
             }
         }
 
         private void comboBoxRole_SelectedIndexChanged(object sender, EventArgs e)
         {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            // Здесь вы устанавливаете автоматический выбор роли "менеджер" в комбо боксе
+            comboBoxRole.SelectedItem = "менеджер";
+
+            // Устанавливаете логин и пароль для менеджера
+            textBoxLogin.Text = "user1";
+            textBoxPassword.Text = "password1";
+
 
         }
     }
