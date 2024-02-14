@@ -24,10 +24,14 @@ namespace Служба_доставки
 
 
 
+
         }
 
         private void label1_Click(object sender, EventArgs e)
         {
+
+
+
 
         }
 
@@ -41,6 +45,7 @@ namespace Служба_доставки
         private void button1_Click(object sender, EventArgs e)
         {
             string filePath = "Log.txt";
+
             string[] lines = File.ReadAllLines(filePath);
 
             string введенныйЛогин = textBoxLogin.Text;
@@ -61,11 +66,12 @@ namespace Служба_доставки
                     if (роль == "менеджер")
                     {
                         // Обработка, если роль соответствует "менеджеру"
-                        MessageBox.Show("Вы вошли как " +  роль );
+                        //MessageBox.Show("Вы вошли как " +  роль );
                         Form2 новаяФорма = new Form2();
 
                         // Скрытие текущей формы
                         this.Hide();
+
 
                         // Отображение новой формы
                         новаяФорма.Show();
