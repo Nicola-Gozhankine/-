@@ -87,7 +87,8 @@ namespace Служба_доставки
                     string[] parts = textBox1.Lines[i].Split(new string[] { "=+=" }, StringSplitOptions.None);
                     string orderNumber = parts[1].Trim();
 
-                    a++;  
+                    a++;
+                    
 
             }
                 if (textBox1.Lines[i].StartsWith("=_+_=")) 
