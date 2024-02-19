@@ -30,9 +30,10 @@ namespace Служба_доставки
 
         private void button4_Click(object sender, EventArgs e)
         {
-            //Form2.ActiveForm.Hide();
-            //Form3 form3 = new Form3();
-            //form3.Show();
+
+            Form2.ActiveForm.Hide();
+            Form5 form5 = new Form5();
+            form5.Show();
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)

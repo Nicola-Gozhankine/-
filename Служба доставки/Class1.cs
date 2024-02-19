@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Служба_доставки
 {
+
     enum status
     {
         получен,
@@ -24,6 +25,8 @@ namespace Служба_доставки
     {
         public int Number { get; set; }
         public DateTime Date_courier { get; set; }
+        public DateTime Time_Statys { get; set; }
+        public DateTime Time_Priem { get; set; }
         public courier Courier { get; set; }
         public status Status_order { get; set; }
     }
