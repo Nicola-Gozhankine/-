@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Служба_доставки
+namespace VS
 {
-    internal class courier
+   public class courier
     {
         public string Name { get; set; }
         public string Surname { get; set; }

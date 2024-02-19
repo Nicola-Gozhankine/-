@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Служба_доставки
+namespace VS
 {
 
-    enum status
+  public  enum status
     {
         получен,
         приготовить,
@@ -21,13 +21,16 @@ namespace Служба_доставки
         списан,
         аннулирован
     }
-    internal class Order
+  public     class Zacas 
     {
-        public int Number { get; set; }
+       public int Number { get; set; }
         public DateTime Date_courier { get; set; }
         public DateTime Time_Statys { get; set; }
         public DateTime Time_Priem { get; set; }
-        public courier Courier { get; set; }
-        public status Status_order { get; set; }
+     public           courier Courier { get; set; }
+      public    status Status_order { get; set; }
+         
+
+
     }
 }
