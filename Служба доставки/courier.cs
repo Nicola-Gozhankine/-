@@ -12,6 +12,7 @@ namespace VS
         public string Surname { get; set; }
         public string Patronymic { get; set; }
         public DateTime Время_брибытия  { get; set; }
+        public string Имя_целиком { get; set; }
 
     }
 }

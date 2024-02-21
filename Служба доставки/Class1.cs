@@ -9,11 +9,11 @@ namespace VS
 {
     public class  Заказчик
     {
-        string имя;
-        string фамилия;
-         string отчество;
-             string полное_имя;
-             string полный_список_заказа;
+      public  string имя;
+      public  string фамилия;
+         public string отчество;
+             public string полное_имя;
+             public string полный_список_заказа;
              
 
 
