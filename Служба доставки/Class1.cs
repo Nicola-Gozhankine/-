@@ -7,8 +7,19 @@ using VS;
 
 namespace VS
 {
+    public class  Заказчик
+    {
+        string имя;
+        string фамилия;
+         string отчество;
+             string полное_имя;
+             string полный_список_заказа;
+             
 
-  public  enum status
+
+    }
+
+    public  enum status
     {
         получен,
         приготовить,
@@ -28,7 +39,7 @@ namespace VS
         {
 
          courier courierL = new courier();
-
+            Заказчик заказчик = new Заказчик();
             
         }
         int a;
@@ -39,6 +50,7 @@ namespace VS
         public DateTime Время_брибытия_Курьера  { get; set; }
         public           courier courierL { get; set; }
       public    status Status_order { get; set; }
+        public Заказчик заказчик { get; set; }
          
 
 

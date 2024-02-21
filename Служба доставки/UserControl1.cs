@@ -106,6 +106,11 @@ namespace Служба_доставки
 
         private void button2_Click(object sender, EventArgs e)
         {
+            Form2.ActiveForm.Hide();
+            Form6 form6 = new Form6(zacas, zacasCollection, panel_indexs);
+
+
+            form6.Show();
 
         }
     }

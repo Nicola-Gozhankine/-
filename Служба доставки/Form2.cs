@@ -87,14 +87,25 @@ namespace Служба_доставки
                      firstName = fullNameCur [1]; // "Иван"
                      middleName = fullNameCur[2]; // "Иванович"
 
+                    string[] fullNameZacashic = textBox1.Lines[i + 7].Split(new string[] { "=+=" }, StringSplitOptions.None);//первая часть
+                    string fullZAc = fullNameZacashic[1]; //
 
+                    string[] Zacname = fullZAc.Split(' '); // Разделение полного имени на части
+                    lastName = Zacname[0]; // "Иванов"
+                    firstName = Zacname[1]; // "Иван"
+                    middleName = Zacname[2]; // "Иванович"
                     VS.Zacas zacas = new VS.Zacas();
                     zacas.courierL = new courier();
                     zacas.Number = Convert.ToInt32(orderNumber);
-                    zacas.ZacasNS();
-                    zacas.courierL.Name = firstName;
-                    zacas.courierL.Patronymic = lastName;
-                    zacas.courierL.Surname = middleName;
+
+
+
+                    {
+                        zacas.ZacasNS();
+                        zacas.courierL.Name = firstName;
+                        zacas.courierL.Patronymic = lastName;
+                        zacas.courierL.Surname = middleName;
+                    }
 
                     {
                         DateTime arrivalTime;
