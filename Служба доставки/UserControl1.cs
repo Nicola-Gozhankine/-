@@ -22,14 +22,25 @@ namespace Служба_доставки
         //VS.Zacas zacas = new Zacas();
         private Zacas zacas;
         private List<Zacas> zacasCollection;
+         int panel_indexs;
+         string lastName;
+         string firstName;
+         string middleName;
 
-        public UserControl1(Zacas zacas, List<Zacas> zacasCollection, int index )
+        public UserControl1(Zacas zacas, List<Zacas> zacasCollection, int index, string firstName, string lastName , string middleName  )
         {
+
             InitializeComponent();
+            this.lastName = lastName;
+            this.firstName = firstName;
+            this.middleName = middleName;
+
             this.zacas = zacas;
             this.zacasCollection = zacasCollection;
+            this.panel_indexs = index;
             label1.Text = zacasCollection[index].Number.ToString();
             label2.Text = zacasCollection[index].Время_брибытия_Курьера.ToString();
+
             // Другие операции с элементами UserControl1
 
         }
@@ -67,7 +78,9 @@ namespace Служба_доставки
         {
 
             Form2.ActiveForm.Hide();
-            Form5 form5 = new Form5();
+            Form5 form5 = new Form5(zacas, zacasCollection, panel_indexs, firstName, lastName, middleName);
+
+
             form5.Show();
         }
 
@@ -77,6 +90,21 @@ namespace Служба_доставки
         }
 
         private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
         {
 
         }

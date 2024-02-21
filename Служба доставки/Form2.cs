@@ -21,15 +21,19 @@ namespace Служба_доставки
     public partial class Form2 : Form
     {
         VS.Zacas zacas = new VS.Zacas();
+        VS.courier courier = new VS.courier();
 
-      public  List<Zacas> zacasCollection = new List<Zacas>();
+     public   string lastName;
+       public  string firstName;
+        public string middleName;
+        public  List<Zacas> zacasCollection = new List<Zacas>();
         public int  NynZS;
         public List<UserControl1> panel = new List<UserControl1>();
 
         // Добавляем элементы в коллекцию
         //zacasCollection.Add(new VS.Zacas()); // Пример добавления второго элемента
 
-        string filePath = "Zacasi.txt"; // замените на реальный путь к вашему файлу
+        public string filePath = "Zacasi.txt"; // замените на реальный путь к вашему файлу
         public Form2()
         {
             InitializeComponent();
@@ -74,16 +78,36 @@ namespace Служба_доставки
 
                     string[] vpq0 = textBox1.Lines[i + 8].Split(new string[] { "=+=" }, StringSplitOptions.None); //первая часть 
                     string vpk1 = vpq0[1].Trim(); // Второая часть 
-                   //  MessageBox.Show(vpk1);// проверка работы 
+                                                  //  MessageBox.Show(vpk1);// проверка работы 
+                    string[] fullStr = textBox1.Lines[i + 7].Split(new string[] { "=+=" }, StringSplitOptions.None);//первая часть
+                    string fullName = fullStr[1]; // "Иванов Иван Иванович"
+
+                    string[] fullNameCur = fullName.Split(' '); // Разделение полного имени на части
+                     lastName = fullNameCur[0]; // "Иванов"
+                     firstName = fullNameCur [1]; // "Иван"
+                     middleName = fullNameCur[2]; // "Иванович"
+
 
                     VS.Zacas zacas = new VS.Zacas();
+                    zacas.courierL = new courier();
                     zacas.Number = Convert.ToInt32(orderNumber);
+                    zacas.ZacasNS();
+                    zacas.courierL.Name = firstName;
+                    zacas.courierL.Patronymic = lastName;
+                    zacas.courierL.Surname = middleName;
 
-                    DateTime arrivalTime;
-                    if (DateTime.TryParse(vpk1, out arrivalTime))
                     {
-                        zacas.Время_брибытия_Курьера = arrivalTime;
+                        DateTime arrivalTime;
+                        if (DateTime.TryParse(vpk1, out arrivalTime))
+                        {
+                            zacas.Время_брибытия_Курьера = arrivalTime;
+                        }
+                        if (DateTime.TryParse(vpk1, out arrivalTime))
+                        {
+                            courier.Время_брибытия = arrivalTime;
+                        }
                     }
+
                     zacasCollection.Add(zacas); // Пример добавления одного элемента
                                   
 
@@ -113,7 +137,7 @@ namespace Служба_доставки
 
               //  MessageBox.Show(NynZS.ToString() + "   NynZ");
                   
-                UserControl1 users = new UserControl1(zacasCollection[NynZS], zacasCollection, NynZS);
+                UserControl1 users = new UserControl1(zacasCollection[NynZS], zacasCollection, NynZS ,firstName, lastName , middleName  );
                 users.Location = new Point(users.Location.X, NynZS * users.Size.Height);
                     panel.Add(users);
                     panel1.Controls.Add(panel[NynZS]);

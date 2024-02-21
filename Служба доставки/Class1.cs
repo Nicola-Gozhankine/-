@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using VS;
 
 namespace VS
 {
@@ -23,13 +24,20 @@ namespace VS
     }
   public     class Zacas 
     {
+        public void  ZacasNS() 
+        {
+
+         courier courierL = new courier();
+
+            
+        }
         int a;
        public int Number { get; set; }
         public DateTime Date_courier { get; set; }
         public DateTime Time_Statys { get; set; }
         public DateTime Time_Priem { get; set; }
         public DateTime Время_брибытия_Курьера  { get; set; }
-        public           courier Courier { get; set; }
+        public           courier courierL { get; set; }
       public    status Status_order { get; set; }
          
 
