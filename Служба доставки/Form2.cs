@@ -11,6 +11,7 @@ using System.IO;
 using static System.Windows.Forms.LinkLabel;
 using System.Text.RegularExpressions;
 using VS;
+using System.Security.Cryptography.X509Certificates;
 
 
 
@@ -19,12 +20,14 @@ namespace Служба_доставки
     
     public partial class Form2 : Form
     {
-     //   VS.Zacas zacas = new VS.Zacas();
+        VS.Zacas zacas = new VS.Zacas();
 
-        List<Zacas> zacasCollection = new List<Zacas>();
+      public  List<Zacas> zacasCollection = new List<Zacas>();
+        public int  NynZS;
+        public List<UserControl1> panel = new List<UserControl1>();
 
         // Добавляем элементы в коллекцию
-                  //zacasCollection.Add(new VS.Zacas()); // Пример добавления второго элемента
+        //zacasCollection.Add(new VS.Zacas()); // Пример добавления второго элемента
 
         string filePath = "Zacasi.txt"; // замените на реальный путь к вашему файлу
         public Form2()
@@ -47,26 +50,64 @@ namespace Служба_доставки
 
         }
 
-        private void Form2_Load(object sender, EventArgs e)
+        public void Form2_Load(object sender, EventArgs e)
         {
 
             //   string filePath = "Zacasi.txt"; // замените на реальный путь к вашему файлу
 
+            string inputText = File.ReadAllText(filePath);
+            textBox1.Text = inputText;
+            int a = 0;
+            int b = 0;
+            int c = 0;
+            string q;
+            string w;
+            for (int i = 0; i < textBox1.Lines.Length; i++)
+            {               
 
-
-
-
-
-
-
-                   List<UserControl1> panel = new List<UserControl1>();
-
-                for (int i = 0; i < 5; i++)
+                if (textBox1.Lines[i].StartsWith("******************************************************************"))
                 {
-                    UserControl1 users = new UserControl1();
-                    users.Location = new Point(users.Location.X, i * users.Size.Height);
+                    
+                    string[] parts = textBox1.Lines[i + 1].Split(new string[] { "=+=" }, StringSplitOptions.None);
+                    string orderNumber = parts[1].Trim(); // Второая часть 
+                                                          // MessageBox.Show(orderNumber);
+                    VS.Zacas zacas = new VS.Zacas();
+                    zacas.Number = Convert.ToInt32(orderNumber);
+
+                    zacasCollection.Add(zacas); // Пример добавления одного элемента
+                                  
+
+                }
+                if (textBox1.Lines[i].StartsWith("=_+_="))
+                {
+                    //q = textBox1.Lines[i + 1];
+                    //MessageBox.Show(q + "b"+"       "+i);
+                    //q = textBox1.Lines[i + 3];
+                    //MessageBox.Show(q + "S" + "       " + "       " + (i + 3));
+
+
+                    b++;
+
+                }
+                if (textBox1.Lines[i].StartsWith("Статус =+="))
+                {
+                    //q = textBox1.Lines[i];
+                    //MessageBox.Show(q + "C" + "       " + i);
+                    c++;
+
+                }
+            }                  
+                   
+                for (  NynZS=0  ; NynZS < zacasCollection.Count ; NynZS++)
+                {
+
+              //  MessageBox.Show(NynZS.ToString() + "   NynZ");
+                  
+                UserControl1 users = new UserControl1(zacasCollection[NynZS], zacasCollection, NynZS);
+                users.Location = new Point(users.Location.X, NynZS * users.Size.Height);
                     panel.Add(users);
-                    panel1.Controls.Add(panel[i]);
+                    panel1.Controls.Add(panel[NynZS]);
+
                 }
            
 
@@ -84,6 +125,7 @@ namespace Служба_доставки
             int b = 0;
             int c = 0;
             string q;
+            string w;
             for (int i = 0; i < textBox1.Lines.Length  ; i++)
             {
 
@@ -102,7 +144,8 @@ namespace Служба_доставки
                  
 
                     zacasCollection.Add(zacas); // Пример добавления одного элемента
-            //       MessageBox.Show(zacas.Number);
+                    w= zacas.Number.ToString();
+          
 
                     a++;
                     
@@ -133,6 +176,11 @@ namespace Служба_доставки
        //  if (textBox1.Lines[] .in0 ) { }
                
 
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
 
         }
     }
