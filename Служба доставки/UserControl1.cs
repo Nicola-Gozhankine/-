@@ -23,12 +23,13 @@ namespace Служба_доставки
         private Zacas zacas;
         private List<Zacas> zacasCollection;
 
-        public UserControl1(Zacas zacas, List<Zacas> zacasCollection, int index)
+        public UserControl1(Zacas zacas, List<Zacas> zacasCollection, int index )
         {
             InitializeComponent();
             this.zacas = zacas;
             this.zacasCollection = zacasCollection;
             label1.Text = zacasCollection[index].Number.ToString();
+            label2.Text = zacasCollection[index].Время_брибытия_Курьера.ToString();
             // Другие операции с элементами UserControl1
 
         }

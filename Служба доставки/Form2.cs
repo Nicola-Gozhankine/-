@@ -71,9 +71,19 @@ namespace Служба_доставки
                     string[] parts = textBox1.Lines[i + 1].Split(new string[] { "=+=" }, StringSplitOptions.None);
                     string orderNumber = parts[1].Trim(); // Второая часть 
                                                           // MessageBox.Show(orderNumber);
+
+                    string[] vpq0 = textBox1.Lines[i + 8].Split(new string[] { "=+=" }, StringSplitOptions.None); //первая часть 
+                    string vpk1 = vpq0[1].Trim(); // Второая часть 
+                   //  MessageBox.Show(vpk1);// проверка работы 
+
                     VS.Zacas zacas = new VS.Zacas();
                     zacas.Number = Convert.ToInt32(orderNumber);
 
+                    DateTime arrivalTime;
+                    if (DateTime.TryParse(vpk1, out arrivalTime))
+                    {
+                        zacas.Время_брибытия_Курьера = arrivalTime;
+                    }
                     zacasCollection.Add(zacas); // Пример добавления одного элемента
                                   
 
@@ -139,6 +149,7 @@ namespace Служба_доставки
                     string[] parts = textBox1.Lines[i+1].Split(new string[] { "=+=" }, StringSplitOptions.None);
                     string orderNumber = parts[1].Trim(); // Второая часть 
                                                           // MessageBox.Show(orderNumber);
+
                     VS.Zacas zacas = new VS.Zacas();
                     zacas.Number = Convert.ToInt32(orderNumber);
                  

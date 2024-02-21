@@ -28,7 +28,8 @@ namespace VS
         public DateTime Date_courier { get; set; }
         public DateTime Time_Statys { get; set; }
         public DateTime Time_Priem { get; set; }
-     public           courier Courier { get; set; }
+        public DateTime Время_брибытия_Курьера  { get; set; }
+        public           courier Courier { get; set; }
       public    status Status_order { get; set; }
          
 
