@@ -60,10 +60,16 @@ namespace Служба_доставки
 
 
                    List<UserControl1> panel = new List<UserControl1>();
-
-                for (int i = 0; i < 5; i++)
+            string filePath = "Zacasi.txt";
+            var user = File.ReadLines(filePath).ToList();
+            int n = 0;
+            foreach (string line in user)
+            {
+                if (line.Contains("*")) { n++; }
+            }
+            for (int i = 0; i < n; i++)
                 {
-                    UserControl1 users = new UserControl1();
+                    UserControl1 users = new UserControl1(i+1);
                     users.Location = new Point(users.Location.X, i * users.Size.Height);
                     panel.Add(users);
                     panel1.Controls.Add(panel[i]);
