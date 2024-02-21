@@ -23,6 +23,7 @@ namespace VS
     }
   public     class Zacas 
     {
+        int a;
        public int Number { get; set; }
         public DateTime Date_courier { get; set; }
         public DateTime Time_Statys { get; set; }

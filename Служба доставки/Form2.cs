@@ -19,7 +19,7 @@ namespace Служба_доставки
     
     public partial class Form2 : Form
     {
-        VS.Zacas zacas = new VS.Zacas();
+     //   VS.Zacas zacas = new VS.Zacas();
 
         List<Zacas> zacasCollection = new List<Zacas>();
 
@@ -99,7 +99,10 @@ namespace Служба_доставки
                                                           // MessageBox.Show(orderNumber);
                     VS.Zacas zacas = new VS.Zacas();
                     zacas.Number = Convert.ToInt32(orderNumber);
+                 
+
                     zacasCollection.Add(zacas); // Пример добавления одного элемента
+            //       MessageBox.Show(zacas.Number);
 
                     a++;
                     
