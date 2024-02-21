@@ -35,6 +35,7 @@ namespace Служба_доставки
         {
             label1.Text = zacasCollection[index].заказчик.полное_имя;
             label4.Text = zacasCollection[index].courierL.Имя_целиком;
+            label6.Text = zacasCollection[index].заказчик.полный_список_заказа;
         }
         private void Form5_FormClosed(object sender, FormClosedEventArgs e)
         {

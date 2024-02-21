@@ -71,57 +71,86 @@ namespace Служба_доставки
 
                 if (textBox1.Lines[i].StartsWith("******************************************************************"))
                 {
+
                     
-                    string[] parts = textBox1.Lines[i + 1].Split(new string[] { "=+=" }, StringSplitOptions.None);
-                    string orderNumber = parts[1].Trim(); // Второая часть 
-                                                          // MessageBox.Show(orderNumber);
+                        string[] parts = textBox1.Lines[i + 1].Split(new string[] { "=+=" }, StringSplitOptions.None);
+                        string orderNumber = parts[1].Trim(); // Второая часть 
+                        // MessageBox.Show(orderNumber);
 
-                    string[] vpq0 = textBox1.Lines[i + 8].Split(new string[] { "=+=" }, StringSplitOptions.None); //первая часть 
-                    string vpk1 = vpq0[1].Trim(); // Второая часть 
-                                                  //  MessageBox.Show(vpk1);// проверка работы 
-                    string[] fullStr = textBox1.Lines[i + 7].Split(new string[] { "=+=" }, StringSplitOptions.None);//первая часть
-                    string fullNameCur0 = fullStr[1]; // "Иванов Иван Иванович"
+                    
+                        string[] vpq0 = textBox1.Lines[i + 8].Split(new string[] { "=+=" }, StringSplitOptions.None); //первая часть 
+                        string vpk1 = vpq0[1].Trim();
+                     // Второая часть 
+                                                   //  MessageBox.Show(vpk1);// проверка работы 
+                        string[] fullStr = textBox1.Lines[i + 7].Split(new string[] { "=+=" }, StringSplitOptions.None);//первая часть
+                        string fullNameCur0 = fullStr[1]; // "Иванов Иван Иванович"
 
-                    string[] fullNameCur = fullNameCur0.Split(' '); // Разделение полного имени на части
-                     lastName = fullNameCur[0]; // "Иванов"
-                     firstName = fullNameCur [1]; // "Иван"
-                     middleName = fullNameCur[2]; // "Иванович"
+                        string[] fullNameCur = fullNameCur0.Split(' '); // Разделение полного имени на части
+                        lastName = fullNameCur[0]; // "Иванов"
+                        firstName = fullNameCur[1]; // "Иван"
+                        middleName = fullNameCur[2]; // "Иванович"
+                    
+                    
+                        string[] fullNameZacashic = textBox1.Lines[i + 5].Split(new string[] { "=+=" }, StringSplitOptions.None);//первая часть
+                        string fullZAc = fullNameZacashic[1]; //
 
-                    string[] fullNameZacashic = textBox1.Lines[i + 5].Split(new string[] { "=+=" }, StringSplitOptions.None);//первая часть
-                    string fullZAc = fullNameZacashic[1]; //
+                        string[] Zacname = fullZAc.Split(' '); // Разделение полного имени на части
+                        lastName = Zacname[0]; // "Иванов"
+                        firstName = Zacname[1]; // "Иван"
+                       middleName = Zacname[2]; // "Иванович"
+                    
+                    
+                       
+                    
+                   
+                        string[] fullStrocaZACasaB = textBox1.Lines[i + 6].Split(new string[] { "=+=" }, StringSplitOptions.None);//первая часть
+                        string fullZACBluda  = fullStrocaZACasaB[1]; //
 
-                    string[] Zacname = fullZAc.Split(' '); // Разделение полного имени на части
-                    lastName = Zacname[0]; // "Иванов"
-                    firstName = Zacname[1]; // "Иван"
-                    middleName = Zacname[2]; // "Иванович"
+                        string[] Blyda  = fullZACBluda.Split(' '); // Разделение полного имени на части
+                 //   string[] BlydaItem;
+                    string[] BlydaItem = new string[Blyda.Length];
+                    for (int i1 = 0; i1 < Blyda.Length; i1++)
+                    {
+
+                        BlydaItem[i1] = Blyda[i1];   
+
+                    }
+
+                    //lastName = Zacname[0]; // "Иванов"
+                    //firstName = Zacname[1]; // "Иван"
+                    //middleName = Zacname[2]; // "Иванович"
+
+
+
                     VS.Zacas zacas = new VS.Zacas();
-                    //      zacas.ZacasNS();
-                    zacas.заказчик = new Заказчик();
-                    zacas.courierL = new courier();
-                    zacas.Number = Convert.ToInt32(orderNumber);
+                        //      zacas.ZacasNS();
+                        zacas.заказчик = new Заказчик();
+                        zacas.courierL = new courier();
+                        zacas.Number = Convert.ToInt32(orderNumber);
+
+                        zacas.заказчик.полное_имя = fullZAc;// потом допиать остальные поля логика как у курьера 
+                    zacas.заказчик.полный_список_заказа=fullZACBluda;
+
+                        {
+                            //zacas.ZacasNS();
+                            zacas.courierL.Имя_целиком = fullNameCur0;
+                            zacas.courierL.Name = firstName;
+                            zacas.courierL.Patronymic = lastName;
+                            zacas.courierL.Surname = middleName;
+                        }
+
+                        {
+                            DateTime arrivalTime;
+                            if (DateTime.TryParse(vpk1, out arrivalTime))
+                            {
+                                zacas.Время_брибытия_Курьера = arrivalTime;
+                            }
+                            if (DateTime.TryParse(vpk1, out arrivalTime))
+                            {
+                                courier.Время_брибытия = arrivalTime;
+                            }
+                        }
                     
-                    zacas.заказчик.полное_имя=fullZAc;// потом допиать остальные поля логика как у курьера 
-
-
-                    {
-                        //zacas.ZacasNS();
-                        zacas.courierL.Имя_целиком = fullNameCur0;
-                        zacas.courierL.Name = firstName;
-                        zacas.courierL.Patronymic = lastName;
-                        zacas.courierL.Surname = middleName;
-                    }
-
-                    {
-                        DateTime arrivalTime;
-                        if (DateTime.TryParse(vpk1, out arrivalTime))
-                        {
-                            zacas.Время_брибытия_Курьера = arrivalTime;
-                        }
-                        if (DateTime.TryParse(vpk1, out arrivalTime))
-                        {
-                            courier.Время_брибытия = arrivalTime;
-                        }
-                    }
 
                     zacasCollection.Add(zacas); // Пример добавления одного элемента
                                   
