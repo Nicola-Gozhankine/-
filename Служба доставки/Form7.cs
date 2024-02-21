@@ -21,6 +21,7 @@ namespace Служба_доставки
             InitializeComponent();
             this.zacas = zacas;
             this.index = index;
+
             this.zacasCollection = zacasCollection;
 
         }
