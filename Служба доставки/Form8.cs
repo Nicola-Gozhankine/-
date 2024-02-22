@@ -80,5 +80,10 @@ namespace Служба_доставки
         {
 
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

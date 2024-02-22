@@ -300,6 +300,15 @@ namespace Служба_доставки
         {
 
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Form2.ActiveForm.Hide();
+            Form9 form9 = new Form9(zacas, zacasCollection );
+
+
+            form9.Show();
+        }
     }
 }
     
