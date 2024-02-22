@@ -37,6 +37,8 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Name = "Form8";
             this.Text = "Статус заказа ";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form8_FormClosing);
+            this.Load += new System.EventHandler(this.Form8_Load);
             this.ResumeLayout(false);
 
         }

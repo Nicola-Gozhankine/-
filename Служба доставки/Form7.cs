@@ -31,5 +31,12 @@ namespace Служба_доставки
         {
 
         }
+
+        private void Form7_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Form2 form2 = new Form2();
+            form2.Show();
+
+        }
     }
 }

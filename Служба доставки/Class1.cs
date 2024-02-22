@@ -19,19 +19,26 @@ namespace VS
 
     }
 
-    public  enum status
+    public class Status
     {
-        получен,
-        приготовить,
-        готовиться,
-        приготовленный,
-        упаковывается,
-        упакован,
-        готов_к_выдачче,
-        отдан_курьеру,
-        передан_на_списание,
-        списан,
-        аннулирован
+
+        public string tecstat;
+        public DateTime vremz_ystanovki;
+        public int num;
+        public enum status
+        {
+            получен,
+            приготовить,
+            готовиться,
+            приготовленный,
+            упаковывается,
+            упакован,
+            готов_к_выдачче,
+            отдан_курьеру,
+            передан_на_списание,
+            списан,
+            аннулирован
+        }
     }
   public     class Zacas 
     {
@@ -40,6 +47,7 @@ namespace VS
 
          courier courierL = new courier();
             Заказчик заказчик = new Заказчик();
+
             
         }
         int a;
@@ -49,7 +57,7 @@ namespace VS
         public DateTime Time_Priem { get; set; }
         public DateTime Время_брибытия_Курьера  { get; set; }
         public           courier courierL { get; set; }
-      public    status Status_order { get; set; }
+      public    Status Status_order { get; set; }
         public Заказчик заказчик { get; set; }
          
 

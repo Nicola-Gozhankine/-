@@ -36,6 +36,11 @@ namespace Служба_доставки
             label1.Text = zacasCollection[index].заказчик.полное_имя;
             label4.Text = zacasCollection[index].courierL.Имя_целиком;
             label6.Text = zacasCollection[index].заказчик.полный_список_заказа;
+            if (zacasCollection[index].Number == zacasCollection[index].Status_order.num)
+            {
+                label8.Text = zacasCollection[index].Status_order.tecstat;
+
+            }
         }
         private void Form5_FormClosed(object sender, FormClosedEventArgs e)
         {

@@ -85,19 +85,21 @@ namespace Служба_доставки
                         string[] fullStr = textBox1.Lines[i + 7].Split(new string[] { "=+=" }, StringSplitOptions.None);//первая часть
                         string fullNameCur0 = fullStr[1]; // "Иванов Иван Иванович"
 
-                        string[] fullNameCur = fullNameCur0.Split(' '); // Разделение полного имени на части
+                    //MessageBox.Show(fullNameCur0);// проверка работы 
+                    string[] fullNameCur = fullNameCur0.Split('.'); // Разделение полного имени на части
                         lastName = fullNameCur[0]; // "Иванов"
                         firstName = fullNameCur[1]; // "Иван"
                         middleName = fullNameCur[2]; // "Иванович"
+
                     
                     
                         string[] fullNameZacashic = textBox1.Lines[i + 5].Split(new string[] { "=+=" }, StringSplitOptions.None);//первая часть
                         string fullZAc = fullNameZacashic[1]; //
 
                         string[] Zacname = fullZAc.Split(' '); // Разделение полного имени на части
-                        lastName = Zacname[0]; // "Иванов"
-                        firstName = Zacname[1]; // "Иван"
-                       middleName = Zacname[2]; // "Иванович"
+                    string    lastNameZ = Zacname[0]; // "Иванов"
+                      string  firstNameZ = Zacname[1]; // "Иван"
+                      string  middleNamez = Zacname[2]; // "Иванович"
                     
                     
                        
@@ -106,7 +108,7 @@ namespace Служба_доставки
                         string[] fullStrocaZACasaB = textBox1.Lines[i + 6].Split(new string[] { "=+=" }, StringSplitOptions.None);//первая часть
                         string fullZACBluda  = fullStrocaZACasaB[1]; //
 
-                        string[] Blyda  = fullZACBluda.Split(' '); // Разделение полного имени на части
+                        string[] Blyda  = fullZACBluda.Split('.'); // Разделение полного имени на части
                  //   string[] BlydaItem;
                     string[] BlydaItem = new string[Blyda.Length];
                     for (int i1 = 0; i1 < Blyda.Length; i1++)
@@ -126,6 +128,7 @@ namespace Служба_доставки
                         //      zacas.ZacasNS();
                         zacas.заказчик = new Заказчик();
                         zacas.courierL = new courier();
+                    zacas.Status_order = new Status();
                         zacas.Number = Convert.ToInt32(orderNumber);
 
                         zacas.заказчик.полное_имя = fullZAc;// потом допиать остальные поля логика как у курьера 
@@ -159,7 +162,42 @@ namespace Служба_доставки
                 if (textBox1.Lines[i].StartsWith("=_+_="))
                 {
                     //q = textBox1.Lines[i + 1];
-                    //MessageBox.Show(q + "b"+"       "+i);
+                    string[] parts = textBox1.Lines[i + 1].Split(new string[] { "=+=" }, StringSplitOptions.None);
+                    string orderNumber = parts[1].Trim(); // Второая часть 
+                    int g= Convert.ToInt32(orderNumber);
+                    string[] strocastatusa  = textBox1.Lines[i + 3].Split(new string[] { "=+=" }, StringSplitOptions.None); //первая часть 
+
+                    string status = strocastatusa[1].Trim();
+                    //MessageBox.Show(status + "  b " + "     " + (i + 1));
+
+                    string[] vps0 = textBox1.Lines[i + 8].Split(new string[] { "=+=" }, StringSplitOptions.None); //первая часть 
+                    string vps1 = vps0[1].Trim();
+                   
+
+                    for (int j = 0; j < zacasCollection.Count; j++)
+                    {
+                        if (zacasCollection[j].Number == g)
+                        {
+                            zacasCollection[j].Status_order.tecstat = status;
+                            zacasCollection[j].Status_order.num = g;
+                            {
+                                DateTime arrivalTime;
+                                if (DateTime.TryParse(vps1, out arrivalTime))
+                                {
+                                    zacasCollection[j].Status_order.vremz_ystanovki = arrivalTime;
+                                }
+                                if (DateTime.TryParse(vps1, out arrivalTime))
+                                {
+                                    zacasCollection[j].Status_order.vremz_ystanovki = arrivalTime;
+                                }
+                            }
+                            
+
+                        }
+                    }
+
+                   // MessageBox.Show( orderNumber + "  b "+"     "+(i+1));
+
                     //q = textBox1.Lines[i + 3];
                     //MessageBox.Show(q + "S" + "       " + "       " + (i + 3));
 

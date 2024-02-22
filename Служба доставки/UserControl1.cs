@@ -41,6 +41,12 @@ namespace Служба_доставки
             label1.Text = zacasCollection[index].Number.ToString();
             label2.Text = zacasCollection[index].Время_брибытия_Курьера.ToString();
 
+
+          if(   zacasCollection[index].Number == zacasCollection[index].Status_order.num)
+            {
+                button3.Text = zacasCollection[index].Status_order.tecstat;
+                    
+            }
             // Другие операции с элементами UserControl1
 
         }
@@ -101,6 +107,11 @@ namespace Служба_доставки
 
         private void button3_Click(object sender, EventArgs e)
         {
+            Form2.ActiveForm.Hide();
+            Form8 form8 = new Form8(zacas, zacasCollection, panel_indexs);
+
+
+            form8.Show();
 
         }
 
