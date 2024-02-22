@@ -8,6 +8,8 @@ using VS;
 
 namespace VS
 {
+
+   
     public class DarkYellow
         {
 
@@ -76,7 +78,7 @@ namespace VS
         public           courier courierL { get; set; }
       public    Status Status_order { get; set; }
         public Заказчик заказчик { get; set; }
-         
+         public Блюда блюда { get; set; }
 
 
     }

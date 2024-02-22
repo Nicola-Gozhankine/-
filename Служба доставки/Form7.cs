@@ -25,7 +25,15 @@ namespace Служба_доставки
             this.zacasCollection = zacasCollection;
 
         }
-        
+        public Form7(Zacas zacas, List<Zacas> zacasCollection)
+        {
+            InitializeComponent();
+            this.zacas = zacas;
+            this.index = index;
+
+            this.zacasCollection = zacasCollection;
+
+        }
 
         private void Form7_Load(object sender, EventArgs e)
         {

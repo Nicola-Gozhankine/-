@@ -15,6 +15,7 @@ namespace Служба_доставки
     {
         private Zacas zacas;
         private List<Zacas> zacasCollection;
+        int index1;
         
         public Form9(Zacas zacas, List<Zacas> zacasCollection)
         {
@@ -77,6 +78,10 @@ namespace Служба_доставки
 
         private void button1_Click(object sender, EventArgs e)
         {
+
+            Form7 form7 = new Form7(zacas, zacasCollection );
+            form7.Show();
+
 
 
         }
