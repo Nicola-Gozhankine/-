@@ -70,6 +70,7 @@ namespace Служба_доставки
             for (int i = 0; i < n; i++)
                 {
                     UserControl1 users = new UserControl1(i+1);
+                    zacasCollection.Add(users.daser());
                     users.Location = new Point(users.Location.X, i * users.Size.Height);
                     panel.Add(users);
                     panel1.Controls.Add(panel[i]);

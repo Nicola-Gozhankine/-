@@ -27,8 +27,9 @@ namespace Служба_доставки
 
         }
         
-        private void UserControl1_Load(object sender, EventArgs e)
+        public Zacas daser()
         {
+            Zacas pilot = new Zacas();
             string filePath = "Zacasi.txt";
             var user = File.ReadLines(filePath).ToList();
             int flag = 0, flag_control = 0;
@@ -44,15 +45,22 @@ namespace Служба_доставки
                 if (line.Contains("Заказ под номером") && flag == 2 && flag_control == this.usercontrol)
                 {
                     this.label1.Text = line.Substring(line.IndexOf("=+=") + 4);
+                    pilot.Number = Convert.ToInt32(line.Substring(line.IndexOf("=+=") + 4));
                     flag--;
                 }
                 if (line.Contains("Время прибытия курьера") && flag == 1 && flag_control == this.usercontrol)
                 {
                     this.label2.Text = line.Substring(line.IndexOf("=+=") + 4);
+                    pilot.Date_courier = Convert.ToDateTime(line.Substring(line.IndexOf("=+=") + 4));
                     flag--;
-                    break;
+                    return pilot;
                 }
             }
+            return null;
+        }
+        private void UserControl1_Load(object sender, EventArgs e)
+        {
+
         }
 
         private void button4_Click(object sender, EventArgs e)
