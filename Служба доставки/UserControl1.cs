@@ -49,6 +49,24 @@ namespace Служба_доставки
                 button3.Text = zacasCollection[index].Status_order.tecstat;
                     
             }
+
+            if (button3.Text == "завершённый(А)")
+            {
+                 button3.BackColor = Color.MediumVioletRed;
+              //  button3.BackColor = Color.BurlyWood;
+
+            }
+            if (button3.Text == "завершённый")
+            {
+                button3.BackColor = Color.DarkOliveGreen;
+
+            }
+            if ((button3.Text != "завершённый(А)")&& (button3.Text != "завершённый"))
+            {
+
+                //  button3.BackColor = Color.BurlyWood;
+                button3.BackColor = Color.MediumPurple;
+            }
             // Другие операции с элементами UserControl1
 
         }
