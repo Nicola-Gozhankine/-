@@ -1,0 +1,3 @@
+user1,password1,менеджер
+2,password2,повар
+user3,password3,упаковщик

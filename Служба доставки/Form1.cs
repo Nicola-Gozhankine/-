@@ -41,7 +41,15 @@ namespace Служба_доставки
         private void button1_Click(object sender, EventArgs e)
         {
             string filePath = "Log.txt";
+           // string filePath = "Log";
             string[] lines = File.ReadAllLines(filePath);
+
+            // Имя файла ярлыка текстового документа
+            //string имя_файла = "";
+
+            //// Относительный путь к файлу относительно текущего рабочего каталога
+            //string относительный_путь = Path.Combine(Environment.CurrentDirectory, "подкаталог", имя_файла);
+
 
             string введенныйЛогин = textBoxLogin.Text;
             string введенныйПароль = textBoxPassword.Text;
