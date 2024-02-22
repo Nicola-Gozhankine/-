@@ -119,15 +119,16 @@
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label7.Location = new System.Drawing.Point(48, 163);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(154, 25);
+            this.label7.Size = new System.Drawing.Size(185, 25);
             this.label7.TabIndex = 8;
-            this.label7.Text = "Список блюд";
+            this.label7.Text = "Текуший статус";
+            this.label7.Click += new System.EventHandler(this.label7_Click);
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label8.Location = new System.Drawing.Point(234, 163);
+            this.label8.Location = new System.Drawing.Point(267, 163);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(76, 25);
             this.label8.TabIndex = 7;

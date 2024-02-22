@@ -72,5 +72,10 @@ namespace Служба_доставки
 
             form6.Show();
         }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
