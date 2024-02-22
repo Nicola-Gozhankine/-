@@ -158,18 +158,42 @@
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "Михайлова Екатерина Павловна",
+            "Новиков Никита Александрович",
+            "Морозова Александра Ивановна",
+            "Волков Владимир Станиславович",
+            "Зайцева Татьяна Дмитриевна",
+            "Лебедева Ирина Александровна",
+            "Соколов Станислав Олегович",
+            "Козлов Кирилл Михайлович",
+            "Макарова Евгения Викторовна",
+            "Николаев Николай Иванович"});
             this.comboBox1.Location = new System.Drawing.Point(136, 110);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(182, 21);
             this.comboBox1.TabIndex = 22;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // comboBox2
             // 
             this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Items.AddRange(new object[] {
+            "Иванов Иван Иванович",
+            "Петров Петр Петрович",
+            "Сидоров Сидор Сидорович",
+            "Козлова Елена Владимировна",
+            "Смирнов Сергей Александрович",
+            "Кузнецова Ольга Игоревна",
+            "Васильева Мария Алексеевна",
+            "Павлов Дмитрий Андреевич",
+            "Александрова Анна Сергеевна",
+            "Федоров Федор Алексеевич"});
             this.comboBox2.Location = new System.Drawing.Point(536, 110);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(182, 21);
             this.comboBox2.TabIndex = 30;
+            this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
             // 
             // textBox4
             // 
@@ -258,6 +282,7 @@
             this.button1.TabIndex = 33;
             this.button1.Text = "блюда";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
