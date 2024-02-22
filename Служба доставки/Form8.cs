@@ -18,16 +18,38 @@ namespace Служба_доставки
         private List<Zacas> zacasCollection;
         private int index;
         int index1;
-        public Form8(Zacas zacas, List<Zacas> zacasCollection, int index  )
+        private Роль роль;
+        public Form8(Zacas zacas, List<Zacas> zacasCollection, int index , Роль роль  )
         {
             InitializeComponent();
             this.zacas = zacas;
             this.index = index;
+            this.роль =роль;
             this.zacasCollection = zacasCollection;
         }
 
         private void Form8_Load(object sender, EventArgs e)
         {
+
+            if (роль.Менеджер==true )
+            {
+
+                label4.Text = "Менеджер ";
+                button6.BackColor= Color.DarkSlateGray;
+                button3.BackColor = Color.DarkSlateGray;
+                button4.BackColor = Color.DarkSlateGray;
+                button8.BackColor = Color.DarkSlateGray;
+                button7.BackColor= Color.Yellow;
+                button9.BackColor = Color.Yellow;
+                button1.Visible = false;
+                if (zacasCollection[index].Number == zacasCollection[index].Status_order.num)
+                {
+                    label6.Text = zacasCollection[index].Number.ToString();
+
+                }
+
+            }
+
             if (zacasCollection[index].Number == zacasCollection[index].Status_order.num)
             {
                 label2.Text = zacasCollection[index].Status_order.tecstat;
@@ -45,6 +67,11 @@ namespace Служба_доставки
         }
 
         private void button7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button6_Click(object sender, EventArgs e)
         {
 
         }

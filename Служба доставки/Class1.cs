@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -7,7 +8,18 @@ using VS;
 
 namespace VS
 {
-    
+    public class DarkYellow
+        {
+
+        public Color darkYellow = Color.FromArgb(255, 204, 0);
+    }
+    public class Роль
+    {
+        public bool Повар  ;
+            public bool Администратор  ;// специальная роль для Арсентия 
+            public bool Менеджер  ;
+            public bool Упаковшик  ;
+    }
     public class  Заказчик
     {
       public  string имя;

@@ -20,6 +20,8 @@ namespace Служба_доставки
     {
 
         //VS.Zacas zacas = new Zacas();
+        VS.Роль роль = new Роль();
+        
         private Zacas zacas;
         private List<Zacas> zacasCollection;
          int panel_indexs;
@@ -34,7 +36,7 @@ namespace Служба_доставки
             this.lastName = lastName;
             this.firstName = firstName;
             this.middleName = middleName;
-
+            роль.Менеджер = true;
             this.zacas = zacas;
             this.zacasCollection = zacasCollection;
             this.panel_indexs = index;
@@ -108,7 +110,7 @@ namespace Служба_доставки
         private void button3_Click(object sender, EventArgs e)
         {
             Form2.ActiveForm.Hide();
-            Form8 form8 = new Form8(zacas, zacasCollection, panel_indexs);
+            Form8 form8 = new Form8(zacas, zacasCollection, panel_indexs,роль);
 
 
             form8.Show();
