@@ -79,6 +79,7 @@ namespace VS
       public    Status Status_order { get; set; }
         public Заказчик заказчик { get; set; }
          public Блюда блюда { get; set; }
+        public List<Блюда> CollectionБлюда1 = VS.Блюда.C;
 
 
     }

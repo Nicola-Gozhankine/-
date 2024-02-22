@@ -1,32 +1,45 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace VS
 {
-   
-        public class Блюда
+
+    public class Блюда
+    {
+        public List<Блюда> CollectionБлюда = new List<Блюда>();
+        public  List<Блюда> CollectionБлюда1 = new List<Блюда>();
+
+        //public int Номер_Блюда;
+        //public string Название;
+        //public string[] Ингридиенты;
+        //public int количествов_заказе;
+        public int Номер_Блюда { get; set; }
+        public string Название { get; set; }
+        public List<string> Ингредиенты { get; set; }
+        public int Количество_заказе { get; set; }
+        public void CV(List<Блюда> CollectionБлюда)
         {
-            //public int Номер_Блюда;
-            //public string Название;
-            //public string[] Ингридиенты;
-            //public int количествов_заказе;
-            public int Номер_Блюда { get; set; }
-            public string Название { get; set; }
-            public List<string> Ингредиенты { get; set; }
-            public int Количество_заказе { get; set; }
-            public static void CV()
-            {
-                // Паэлья
-                Блюда паэлья = new Блюда
+
+             List<Блюда> CollectionБлюда1 = new List<Блюда>();
+    
+            this.CollectionБлюда1=CollectionБлюда;
+
+        // Паэлья
+
+
+        Блюда паэлья = new Блюда
                 {
                     Номер_Блюда = 1,
                     Название = "Паэлья",
                     Ингредиенты = new List<string> { "рис", "курица или морепродукты (креветки, кальмары)", "оливковое масло", "лук", "чеснок", "паприка", "шафран" },
                     Количество_заказе = 0
                 };
+          //  CollectionБлюда.Add(паэлья );
 
                 // Мусака
                 Блюда мусака = new Блюда
@@ -241,11 +254,39 @@ namespace VS
                     Ингредиенты = new List<string> { "Сыр маскарпоне", "Бисквитное печенье савоярди", "Кофе", "Желтки", "Сахар", "Какао" },
                     Количество_заказе    = 0
                 };
+            CollectionБлюда.Add(факез);
+            CollectionБлюда.Add(паэлья);
+            CollectionБлюда.Add(тирамису);
+            CollectionБлюда.Add(ламбКарри);
+            CollectionБлюда.Add(омлет);
+            CollectionБлюда.Add(рататуй);
+            CollectionБлюда.Add(лаврак);
+            CollectionБлюда.Add(лазанья);
+            CollectionБлюда.Add(газпачо);
+            CollectionБлюда.Add(мусака);
+            CollectionБлюда.Add(таджин);
+            CollectionБлюда.Add(кальцоне);
+            CollectionБлюда.Add(фалафель);
+            
+            CollectionБлюда.Add(хумус);
+            CollectionБлюда.Add(лабне);
+            CollectionБлюда.Add(тапенад);
+            CollectionБлюда.Add(лаблеу);
+            CollectionБлюда.Add(кебаб);
+            CollectionБлюда.Add(кускус);
+            CollectionБлюда.Add(креветки);
+            CollectionБлюда.Add(тунец);
+            CollectionБлюда.Add(ламбКебаб);
+            CollectionБлюда.Add(капрезе);
+           
 
-            }
 
 
 
-        
+        }
+
+
+
+
     }
 }
