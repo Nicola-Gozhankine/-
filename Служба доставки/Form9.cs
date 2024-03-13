@@ -35,7 +35,8 @@ namespace Служба_доставки
             int lastNumber;
             if (zacasCollection != null && zacasCollection.Count > 0)
             {
-                 lastNumber = zacasCollection[zacasCollection.Count - 1].Number;
+                lastNumber = zacasCollection[zacasCollection.Count - 1].Number;
+               // lastNumber = zacasCollection[zacasCollection.Count ].Number;
                 n = lastNumber + 1;
                 label2.Text = n.ToString();
                 dateTimePicker1.Format = DateTimePickerFormat.Time;
@@ -43,16 +44,21 @@ namespace Служба_доставки
                 label3.Text = DateTime.Now.ToString();
                 zacas.заказчик = new Заказчик(); // Создание и инициализация объекта заказчика
                 zacas.courierL = new courier();
+                zacas.Number = n ;
+
             }
-            
-           
-            n = 0  + 1;
-            label2.Text = n.ToString();
-            dateTimePicker1.Format = DateTimePickerFormat.Time;
-            dateTimePicker1.ShowUpDown = true;
-            label3.Text = DateTime.Now.ToString();
-            zacas.заказчик = new Заказчик(); // Создание и инициализация объекта заказчика
-            zacas.courierL = new courier();
+
+            else
+            {
+                n = 0 + 1;
+                label2.Text = n.ToString();
+                dateTimePicker1.Format = DateTimePickerFormat.Time;
+                dateTimePicker1.ShowUpDown = true;
+                label3.Text = DateTime.Now.ToString();
+                zacas.заказчик = new Заказчик(); // Создание и инициализация объекта заказчика
+                zacas.courierL = new courier();
+                zacas.Number = n;
+            }
 
         }
 

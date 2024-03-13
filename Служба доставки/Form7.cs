@@ -60,7 +60,7 @@ namespace Служба_доставки
         private void Form7_Load(object sender, EventArgs e)
         {
             button1.Visible = false;
-            button1.Visible = false;
+            button2.Visible = false;
             CollectionБлюдаZacas.Clear();
             CollectionБлюдаZacas = Блюда.CV();
             comboBox1.DataSource = CollectionБлюдаZacas;
@@ -154,7 +154,7 @@ namespace Служба_доставки
 Статус =+= {status}
 От следющего клиента =+= {client}
 В заказе указан следующий список блюд =+= {dishes}
-Курьер=+= {courier}
+Курьер=+={courier}
 Время прибытия курьера  =+= {courierArrivalTime:HH:mm:ss}
 Адрес для загрузки видео =+= {videoAddress}
 ____________________________________________________________________________

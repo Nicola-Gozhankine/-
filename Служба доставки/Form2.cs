@@ -87,7 +87,7 @@ namespace Служба_доставки
                         string fullNameCur0 = fullStr[1]; // "Иванов Иван Иванович"
 
                     //MessageBox.Show(fullNameCur0);// проверка работы 
-                    string[] fullNameCur = fullNameCur0.Split('.'); // Разделение полного имени на части
+                    string[] fullNameCur = fullNameCur0.Split(' '); // Разделение полного имени на части
                         lastName = fullNameCur[0]; // "Иванов"
                         firstName = fullNameCur[1]; // "Иван"
                         middleName = fullNameCur[2]; // "Иванович"
