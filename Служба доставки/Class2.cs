@@ -255,7 +255,7 @@ namespace VS
                     Ингредиенты = new List<string> { "Сыр маскарпоне", "Бисквитное печенье савоярди", "Кофе", "Желтки", "Сахар", "Какао" },
                     Количество_заказе    = 0
                 };
-            CollectionБлюда.Add(факез);
+            CollectionБлюда.Add(факез); //1
             CollectionБлюда.Add(паэлья);
             CollectionБлюда.Add(тирамису);
             CollectionБлюда.Add(ламбКарри);
@@ -264,7 +264,7 @@ namespace VS
             CollectionБлюда.Add(лаврак);
             CollectionБлюда.Add(лазанья);
             CollectionБлюда.Add(газпачо);
-            CollectionБлюда.Add(мусака);
+            CollectionБлюда.Add(мусака);//10
             CollectionБлюда.Add(таджин);
             CollectionБлюда.Add(кальцоне);
             CollectionБлюда.Add(фалафель);
@@ -278,7 +278,7 @@ namespace VS
             CollectionБлюда.Add(креветки);
             CollectionБлюда.Add(тунец);
             CollectionБлюда.Add(ламбКебаб);
-            CollectionБлюда.Add(капрезе);
+            CollectionБлюда.Add(капрезе);//22
            
             return CollectionБлюда;
 
