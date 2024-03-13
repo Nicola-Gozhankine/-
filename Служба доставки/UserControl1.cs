@@ -102,7 +102,7 @@ namespace Служба_доставки
 
         private void button4_Click(object sender, EventArgs e)
         {
-
+            //курьер 
             Form2.ActiveForm.Hide();
             Form5 form5 = new Form5(zacas, zacasCollection, panel_indexs, firstName, lastName, middleName);
 
@@ -127,6 +127,8 @@ namespace Служба_доставки
 
         private void button3_Click(object sender, EventArgs e)
         {
+            //Статус заказа 
+
             Form2.ActiveForm.Hide();
             Form8 form8 = new Form8(zacas, zacasCollection, panel_indexs,роль);
 
@@ -136,7 +138,8 @@ namespace Служба_доставки
         }
 
         private void button2_Click(object sender, EventArgs e)
-        {
+        {//Информация о заказе 
+
             Form2.ActiveForm.Hide();
             Form6 form6 = new Form6(zacas, zacasCollection, panel_indexs);
 
