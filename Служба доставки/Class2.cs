@@ -22,7 +22,8 @@ namespace VS
         public string Название { get; set; }
         public List<string> Ингредиенты { get; set; }
         public int Количество_заказе { get; set; }
-        public void CV(List<Блюда> CollectionБлюда)
+
+        public List<Блюда>   CV()
         {
 
              List<Блюда> CollectionБлюда1 = new List<Блюда>();
@@ -279,7 +280,7 @@ namespace VS
             CollectionБлюда.Add(ламбКебаб);
             CollectionБлюда.Add(капрезе);
            
-
+            return CollectionБлюда;
 
 
 

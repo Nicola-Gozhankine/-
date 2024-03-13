@@ -65,8 +65,9 @@ namespace VS
         {
 
          courier courierL = new courier();
-            Заказчик заказчик = new Заказчик();
+               Заказчик заказчик = new Заказчик();
 
+          
             
         }
         int a;
@@ -79,7 +80,8 @@ namespace VS
       public    Status Status_order { get; set; }
         public Заказчик заказчик { get; set; }
          public Блюда блюда { get; set; }
-       // public List<Блюда> CollectionБлюда1 = VS.Блюда.C;
+        public List<Блюда> CollectionБлюдаZ { get; set; } 
+        // public List<Блюда> CollectionБлюда1 = VS.Блюда.C;
 
 
     }

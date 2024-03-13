@@ -20,6 +20,7 @@ namespace Служба_доставки
     
     public partial class Form2 : Form
     {
+        VS.Блюда Блюда = new VS.Блюда();
         VS.Zacas zacas = new VS.Zacas();
         VS.courier courier = new VS.courier();
 
@@ -100,23 +101,35 @@ namespace Служба_доставки
                     string    lastNameZ = Zacname[0]; // "Иванов"
                       string  firstNameZ = Zacname[1]; // "Иван"
                       string  middleNamez = Zacname[2]; // "Иванович"
-                    
-                    
-                       
-                    
-                   
-                        string[] fullStrocaZACasaB = textBox1.Lines[i + 6].Split(new string[] { "=+=" }, StringSplitOptions.None);//первая часть
-                        string fullZACBluda  = fullStrocaZACasaB[1]; //
 
-                        string[] Blyda  = fullZACBluda.Split('.'); // Разделение полного имени на части
-                 //   string[] BlydaItem;
-                    string[] BlydaItem = new string[Blyda.Length];
-                    for (int i1 = 0; i1 < Blyda.Length; i1++)
+
+
+
+
+                    string[] fullStrocaZACasaB = textBox1.Lines[i + 6].Split(new string[] { "=+=" }, StringSplitOptions.None); // Разделение строки на части
+                    string fullZACBluda = fullStrocaZACasaB[1]; // Получаем вторую часть строки (список блюд)
+                  List<string> nim = new List<string>();
+                    List<int> col = new List<int>();
+                    string[] Blyda = fullZACBluda.Split('.'); // Разделение полного имени на части
+                    foreach (string blydoWithCount in Blyda)
                     {
+                        string[] partsArray = blydoWithCount.Split(new string[] { "к:" }, StringSplitOptions.RemoveEmptyEntries); 
 
-                        BlydaItem[i1] = Blyda[i1];   
+                        string название = parts[0].Trim(); // Получаем название блюда, удаляем лишние пробелы
+                        int количество = 0; // Переменная для хранения количества блюд по умолчанию
+
+                        if (parts.Length > 1) // Проверка на наличие количества
+                        {
+                            int.TryParse(parts[1].Trim(), out количество); // Пытаемся преобразовать количество в int
+                        }
+
+
+                        // Делаем что-то с названием и количеством блюда, например, записываем в список или выполняем другие операции
+                        nim.Add(название);
+                        col.Add(количество);
 
                     }
+
 
                     //lastName = Zacname[0]; // "Иванов"
                     //firstName = Zacname[1]; // "Иван"
@@ -129,7 +142,11 @@ namespace Служба_доставки
                         zacas.заказчик = new Заказчик();
                         zacas.courierL = new courier();
                     zacas.Status_order = new Status();
+                    zacas.CollectionБлюдаZ = Блюда.CV();
                         zacas.Number = Convert.ToInt32(orderNumber);
+
+
+
 
                         zacas.заказчик.полное_имя = fullZAc;// потом допиать остальные поля логика как у курьера 
                     zacas.заказчик.полный_список_заказа=fullZACBluda;
@@ -142,6 +159,8 @@ namespace Служба_доставки
                             zacas.courierL.Surname = middleName;
                         }
 
+
+
                         {
                             DateTime arrivalTime;
                             if (DateTime.TryParse(vpk1, out arrivalTime))
@@ -153,9 +172,24 @@ namespace Служба_доставки
                                 courier.Время_брибытия = arrivalTime;
                             }
                         }
-                    
 
-                    zacasCollection.Add(zacas); // Пример добавления одного элемента
+                    for (i = 0; i < nim.Count; i++)
+                    {
+                        for (int j = 0; j < 20; j++) {
+                            if (zacas.CollectionБлюдаZ[j].Название == nim[i])
+
+                            {
+                                
+                            }
+
+                       }
+                                               
+
+
+
+                    }
+
+                    zacasCollection.Add(zacas); // Пример добавления одного элемента  //////////////////////////////////////////////////////////////////////////////////
                                   
 
                 }
@@ -196,6 +230,7 @@ namespace Служба_доставки
                         }
                     }
 
+
                    // MessageBox.Show( orderNumber + "  b "+"     "+(i+1));
 
                     //q = textBox1.Lines[i + 3];
@@ -212,7 +247,7 @@ namespace Служба_доставки
                     c++;
 
                 }
-            }                  
+            }    //==================================================================================================================================================              
                    
                 for (  NynZS=0  ; NynZS < zacasCollection.Count ; NynZS++)
                 {
@@ -232,7 +267,7 @@ namespace Служба_доставки
             {
                 Application.Exit();
             }
-
+        //-------------------------------------------------------------------------------------------------------------------
         private void button2_Click(object sender, EventArgs e)
         {
             string inputText = File.ReadAllText(filePath);
