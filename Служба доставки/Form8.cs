@@ -85,5 +85,17 @@ namespace Служба_доставки
         {
 
         }
+
+        private void button14_Click(object sender, EventArgs e)
+        {
+            int orderNumber = 164532; // Номер заказа
+            string editor = "Менеджер"; // Редактор
+            string status = "передан_на_кухню"; // Статус
+            DateTime time = new DateTime(2023, 3, 15, 9, 10, 12); // Время заказа
+
+            string orderText = $"Заказ под номером =+= {orderNumber}" +
+                $"{Environment.NewLine}Редактор =+= {editor}{Environment.NewLine}Статус =+= {status}" +
+                $"{Environment.NewLine}Время =+= {time:HH:mm:ss}{Environment.NewLine}=+===";
+        }
     }
 }
