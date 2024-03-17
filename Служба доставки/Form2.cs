@@ -208,9 +208,9 @@ namespace Служба_доставки
                     string[] strocastatusa  = textBox1.Lines[i + 3].Split(new string[] { "=+=" }, StringSplitOptions.None); //первая часть 
 
                     string status = strocastatusa[1].Trim();
-                    //MessageBox.Show(status + "  b " + "     " + (i + 1));
+                  //  MessageBox.Show(status + "  b " + "     " + (i + 1));
 
-                    string[] vps0 = textBox1.Lines[i + 8].Split(new string[] { "=+=" }, StringSplitOptions.None); //первая часть 
+                    string[] vps0 = textBox1.Lines[i + 4].Split(new string[] { "=+=" }, StringSplitOptions.None); //первая часть 
                     string vps1 = vps0[1].Trim();
                    
 

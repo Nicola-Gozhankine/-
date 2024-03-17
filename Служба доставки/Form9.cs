@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using VS;
+using System.IO; 
 
 namespace Служба_доставки
 {
@@ -59,6 +60,12 @@ namespace Служба_доставки
                 zacas.courierL = new courier();
                 zacas.Number = n;
             }
+
+            // Загрузка элементов из файла
+            string[] items = File.ReadAllLines("combobox_items.txt");
+            comboBox1.Items.AddRange(items);
+            string[] items1 = File.ReadAllLines("combobox_items1.txt");
+            comboBox2.Items.AddRange(items1);
 
         }
 
@@ -112,12 +119,34 @@ namespace Служба_доставки
 
         private void button1_Click(object sender, EventArgs e)
         {
-            VS.Роль роль = new Роль();
-            роль.Менеджер = true;
 
-            Form7 form7 = new Form7(zacas, zacasCollection ,роль );
+            string fullNameCustomer = zacas.заказчик.полное_имя;
+            string fullNameCourier = zacas.courierL.Имя_целиком;
 
-            form7.Show();
+            if (!string.IsNullOrEmpty(fullNameCustomer) && !string.IsNullOrEmpty(fullNameCourier))
+            {
+                // Оба поля заполнены - разрешить определенное действие
+                // Например, продолжить выполнение операции или отобразить сообщение об успешном заполнении
+                VS.Роль роль = new Роль();
+                роль.Менеджер = true;
+
+                Form7 form7 = new Form7(zacas, zacasCollection, роль);
+
+                form7.Show();
+
+            }
+            else if (string.IsNullOrEmpty(fullNameCustomer))
+            {
+                // Поле заказчика не заполнено
+                MessageBox.Show("Пожалуйста, заполните информацию о заказчике.");
+            }
+            else
+            {
+                // Поле курьера не заполнено
+                MessageBox.Show("Пожалуйста, заполните информацию о курьере.");
+            }
+
+            
 
 
 
@@ -126,6 +155,60 @@ namespace Служба_доставки
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
             zacas.courierL.Время_брибытия = dateTimePicker1.Value; 
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+           
+
+            // Проверка корректности ввода, например, можно проверить, что все поля заполнены
+            if (textBox1.Text != "" && textBox2.Text != "" && textBox3.Text != "")
+            {
+                // Сбор данных из текстовых полей
+                string fullNameCur0 = $"{textBox1.Text} {textBox2.Text} {textBox3.Text}";
+                // Добавление данных в коллекцию комбобокса
+                comboBox1.Items.Add(fullNameCur0);
+                // Сохранение элементов в файл
+                string[] items = new string[comboBox1.Items.Count];
+                comboBox1.Items.CopyTo(items, 0);
+                File.WriteAllLines("combobox_items.txt", items);
+            }
+            else
+            {
+                MessageBox.Show("Пожалуйста, заполните все поля корректно.");
+            }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            // Проверка корректности ввода, например, можно проверить, что все поля заполнены
+            if (textBox4.Text != "" && textBox5.Text != "" && textBox6.Text != "")
+            {
+                // Сбор данных из текстовых полей
+                string fullNameCur0 = $"{textBox4.Text} {textBox5.Text} {textBox6.Text}";
+                // Добавление данных в коллекцию комбобокса
+                comboBox2.Items.Add(fullNameCur0);
+                // Сохранение элементов в файл
+                string[] items = new string[comboBox2.Items.Count];
+                comboBox2.Items.CopyTo(items, 0);
+                File.WriteAllLines("combobox_items1.txt", items);
+
+            }
+            else
+            {
+                MessageBox.Show("Пожалуйста, заполните все поля корректно.");
+            }
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            string[] items = new string[comboBox1.Items.Count];
+            comboBox2.Items.CopyTo(items, 0);
+            File.WriteAllLines("combobox_items.txt", items);
+            string[] items1 = new string[comboBox2.Items.Count];
+            comboBox2.Items.CopyTo(items1, 0);
+            File.WriteAllLines("combobox_items1.txt", items1);
         }
     }
 }
