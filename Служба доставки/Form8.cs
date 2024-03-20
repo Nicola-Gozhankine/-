@@ -186,7 +186,7 @@ public class DoubleClickButton : Button
                 }
                 else
                 {
-                    MessageBox.Show("Статус заказа не может иметь ранее имеющийся статус");
+                    MessageBox.Show("Статус заказа не может иметь ранее имеющийся статус   " + index );
                     comboBox1.Text = "";
                 }
             }

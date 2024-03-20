@@ -131,22 +131,30 @@ namespace Служба_доставки
 
         private void button2_Click(object sender, EventArgs e)
         {
-            zacas.заказчик.полный_список_заказа=spzac;
-            // Генерация динамических данных
-            Random rnd = new Random();
-            int orderNumber = zacas.Number;
+            if (listBox1.Items.Count == 0)
+            {
+                // List Box пуст
+                MessageBox.Show("Нулевое количество ");
+            }
+            else
+            {
+               
+                zacas.заказчик.полный_список_заказа = spzac;
+                // Генерация динамических данных
+                Random rnd = new Random();
+                int orderNumber = zacas.Number;
 
-            DateTime acceptTime = DateTime.Now; // Текущее время как время принятия заказа
-            string editor = "Менеджер";
-            string status = "получен";
-            string client = zacas.заказчик.полное_имя;
-            string dishes = zacas.заказчик.полный_список_заказа;
-            string courier = zacas.courierL.Имя_целиком;
-            DateTime courierArrivalTime = zacas.courierL.Время_брибытия; // Время прибытия курьера через 1.5 часа
-            string videoAddress = "// Тут ничего нет но в конце будет";
+                DateTime acceptTime = DateTime.Now; // Текущее время как время принятия заказа
+                string editor = "Менеджер";
+                string status = "получен";
+                string client = zacas.заказчик.полное_имя;
+                string dishes = zacas.заказчик.полный_список_заказа;
+                string courier = zacas.courierL.Имя_целиком;
+                DateTime courierArrivalTime = zacas.courierL.Время_брибытия; // Время прибытия курьера через 1.5 часа
+                string videoAddress = "// Тут ничего нет но в конце будет";
 
-            // Формирование текста заказа с динамическими данными
-            string orderText = $@"******************************************************************
+                // Формирование текста заказа с динамическими данными
+                string orderText = $@"******************************************************************
 Заказ под номером =+= {orderNumber}
 Был принят =+= {acceptTime:HH:mm:ss} 
 Редактор =+= {editor}
@@ -160,10 +168,10 @@ ____________________________________________________________________________
 ";
 
 
-            File.AppendAllText(filePath, Environment.NewLine + orderText);
+                File.AppendAllText(filePath, Environment.NewLine + orderText);
 
+            }
         }
-
         private void button3_Click(object sender, EventArgs e)
         {
             

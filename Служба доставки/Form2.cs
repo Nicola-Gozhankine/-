@@ -22,7 +22,7 @@ namespace Служба_доставки
         VS.Блюда Блюда = new VS.Блюда();
         VS.Zacas zacas = new VS.Zacas();
         VS.courier courier = new VS.courier();
-
+        VS.Роль роль = new Роль();
         public string lastName;
         public string firstName;
         public string middleName;
@@ -34,9 +34,15 @@ namespace Служба_доставки
         //zacasCollection.Add(new VS.Zacas()); // Пример добавления второго элемента
 
         public string filePath = "Zacasi.txt"; // замените на реальный путь к вашему файлу
-        public Form2()
+        public Form2(Роль роль)
         {
             InitializeComponent();
+            this.роль = роль;
+        }
+        public Form2( )
+        {
+            InitializeComponent();
+            
         }
 
         private void button1_Click(object sender, EventArgs e)

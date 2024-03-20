@@ -35,10 +35,36 @@ namespace Служба_доставки
         {
             label1.Text = zacasCollection[index].заказчик.полное_имя;
             label4.Text = zacasCollection[index].courierL.Имя_целиком;
+            //MessageBox.Show(zacasCollection[index].заказчик.полный_список_заказа);
+            //MessageBox.Show(zacas.заказчик.полный_список_заказа);
             string[] arr = zacasCollection[index].заказчик.полный_список_заказа.Split('.');
             for(int i = 0; i < arr.Length; i++)
             {
-                listBox1.Items.Add(arr[i]);
+                // Делаем второе деление по разделителю 'к:'
+                string[] parts = arr[i].Split(new string[] { "к:" }, StringSplitOptions.None);
+
+                if (parts.Length == 2) // Проверяем, что получилась пара частей после второго деления
+                {
+                    string firstPart = parts[0].Trim(); // Первая часть строки
+                    int quantity; // Переменная для хранения количества
+
+                    if (int.TryParse(parts[1].Trim(), out quantity)) // Пытаемся конвертировать вторую часть в число
+                    {
+                        // Формируем новую строку в форме "первая часть [количество]"
+                        string newString = $"{firstPart} || в  количестве [{quantity}]||";
+                        listBox1.Items.Add(newString); // Добавляем сформированную строку в listBox1
+                    }
+                    else
+                    {
+                        // Обработка ситуации, когда вторая часть не является числом
+                        // Можно добавить сообщение об ошибке или другую логику
+                    }
+                }
+                else
+                {
+                    // Обработка ситуации, когда деление по 'к:' не дает две части
+                    // Можно добавить сообщение об ошибке или другую логику
+                }
             }
             if (zacasCollection[index].Number == zacasCollection[index].Status_order.num)
             {
@@ -78,6 +104,11 @@ namespace Служба_доставки
         }
 
         private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

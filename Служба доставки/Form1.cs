@@ -86,7 +86,7 @@ namespace Служба_доставки
             if (роль == "Администратор")
             {
                 роль_клон.Администратор = true;
-                Registration form = new Registration();
+                Registration form = new Registration(роль_клон);
                 form.flag = 0;
                 this.Hide();
                 form.Show();
@@ -94,21 +94,21 @@ namespace Служба_доставки
             else if (роль == "Менеджер")
             {
                 роль_клон.Менеджер = true;
-                Form2 form = new Form2();
+                Form2 form = new Form2(роль_клон);
                 this.Hide();
                 form.Show();
             }
             else if (роль == "Повар")
             {
                 роль_клон.Повар = true;
-                Form2 form = new Form2();
+                Form2 form = new Form2(роль_клон);
                 this.Hide();
                 form.Show();
             }
             else if (роль == "Упаковщик")
             {
                 роль_клон.Упаковшик = true;
-                Form2 form = new Form2();
+                Form2 form = new Form2(роль_клон);
                 this.Hide();
                 form.Show();
             }

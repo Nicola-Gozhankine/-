@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using VS;
 
 namespace Служба_доставки
 {
@@ -17,6 +18,10 @@ namespace Служба_доставки
     {
         public int flag;
         public Registration( /*Показвает есть ли файл или нет, если файл есть то 0 если нет то 1*/)
+        {
+            InitializeComponent();
+        }
+        public Registration(Роль роль )
         {
             InitializeComponent();
         }
