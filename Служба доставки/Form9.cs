@@ -193,12 +193,12 @@ namespace Служба_доставки
 
         private void button2_Click(object sender, EventArgs e)
         {
-            string[] items = new string[comboBox1.Items.Count];
-            comboBox2.Items.CopyTo(items, 0);
-            File.WriteAllLines("combobox_items.txt", items);
-            string[] items1 = new string[comboBox2.Items.Count];
-            comboBox2.Items.CopyTo(items1, 0);
-            File.WriteAllLines("combobox_items1.txt", items1);
+        //    string[] items = new string[comboBox1.Items.Count];
+        //    comboBox2.Items.CopyTo(items, 0);
+        //    File.WriteAllLines("combobox_items.txt", items);
+        //    string[] items1 = new string[comboBox2.Items.Count];
+        //    comboBox2.Items.CopyTo(items1, 0);
+        //    File.WriteAllLines("combobox_items1.txt", items1);
         }
 
         private void label4_Click(object sender, EventArgs e)
