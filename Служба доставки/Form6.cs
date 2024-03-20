@@ -35,7 +35,11 @@ namespace Служба_доставки
         {
             label1.Text = zacasCollection[index].заказчик.полное_имя;
             label4.Text = zacasCollection[index].courierL.Имя_целиком;
-            label6.Text = zacasCollection[index].заказчик.полный_список_заказа;
+            string[] arr = zacasCollection[index].заказчик.полный_список_заказа.Split('.');
+            for(int i = 0; i < arr.Length; i++)
+            {
+                listBox1.Items.Add(arr[i]);
+            }
             if (zacasCollection[index].Number == zacasCollection[index].Status_order.num)
             {
                 label8.Text = zacasCollection[index].Status_order.tecstat;

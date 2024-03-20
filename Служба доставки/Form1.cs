@@ -9,21 +9,39 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using static System.Windows.Forms.LinkLabel;
+using System.Security.Cryptography;
+using System.Data.SqlTypes;
+using VS;
 
 namespace Служба_доставки
 {
     public partial class Form1 : Form
     {
+        static public Роль роль_клон = new Роль();
         public Form1()
         {
             InitializeComponent();
         }
 
+        public static string hash_function(string input)
+        {
+            using (SHA256 sha256 = SHA256.Create())
+            {
+                byte[] inputBytes = Encoding.UTF8.GetBytes(input);
+                byte[] hashBytes = sha256.ComputeHash(inputBytes);
+
+                StringBuilder sb = new StringBuilder();
+                for (int i = 0; i < hashBytes.Length; i++)
+                {
+                    sb.Append(hashBytes[i].ToString("x2"));
+                }
+
+                return sb.ToString();
+            }
+        }
         private void Form1_Load(object sender, EventArgs e)
         {
-
-
-
+            textBoxLogin.Select();
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -41,71 +59,58 @@ namespace Служба_доставки
         private void button1_Click(object sender, EventArgs e)
         {
             string filePath = "Log.txt";
-           // string filePath = "Log";
-            string[] lines = File.ReadAllLines(filePath);
-
-            // Имя файла ярлыка текстового документа
-            //string имя_файла = "";
-
-            //// Относительный путь к файлу относительно текущего рабочего каталога
-            //string относительный_путь = Path.Combine(Environment.CurrentDirectory, "подкаталог", имя_файла);
-
-
-            string введенныйЛогин = textBoxLogin.Text;
-            string введенныйПароль = textBoxPassword.Text;
-            string выбраннаяРоль = comboBoxRole.SelectedItem.ToString();
-
-            foreach (string line in lines)
+            string роль = "";
+            if (!File.Exists(filePath))
             {
-                string[] данные = line.Split(','); // Предполагается, что данные в файле разделены запятой
-
-                string логин = данные[0];
-                string пароль = данные[1];
-                string роль = данные[2];
-
-                if (введенныйЛогин == логин && введенныйПароль == пароль && выбраннаяРоль == роль)
+                MessageBox.Show("Нужно создать учетную запись администратора");
+                Registration form = new Registration();
+                form.flag = 1;
+                this.Hide();
+                form.Show();
+            }
+            else
+            {
+                string введенныйЛогин = textBoxLogin.Text;
+                string введенныйПароль = textBoxPassword.Text;
+                string user = введенныйЛогин + "," + введенныйПароль;
+                user = hash_function(user);
+                string[] readText = File.ReadAllLines(filePath);
+                foreach (string s in readText)
                 {
-                    // Выполнение кода, если сочетание логина, пароля и роли соответствует данным из файла
-                    if (роль == "менеджер")
+                    if (s.Contains(user))
                     {
-                        // Обработка, если роль соответствует "менеджеру"
-                      //  MessageBox.Show("Вы вошли как " +  роль );
-                        Form2 новаяФорма = new Form2();
-
-                        // Скрытие текущей формы
-                        this.Hide();
-
-                        // Отображение новой формы
-                        новаяФорма.Show();
-
+                        роль = s.Split(',')[1];
                     }
-                    else if (роль == "повар")
-                    {
-                        // Обработка, если роль соответствует "повару"
-                        MessageBox.Show("Вы вошли как " + роль);
-                        Form3 новаяФорма = new Form3();
-
-                        // Скрытие текущей формы
-                        this.Hide();
-
-                        // Отображение новой формы
-                        новаяФорма.Show();
-                    }
-                    else if (роль == "упаковщик")
-                    {
-                        // Обработка, если роль соответствует "упаковщику"
-                        MessageBox.Show("Вы вошли как " + роль);
-                        Form4 новаяФорма = new Form4();
-
-                        // Скрытие текущей формы
-                        this.Hide();
-
-                        // Отображение новой формы
-                        новаяФорма.Show();
-                    }
-                   
                 }
-              //  else MessageBox.Show("Not");
+            }
+            if (роль == "Администратор")
+            {
+                роль_клон.Администратор = true;
+                Registration form = new Registration();
+                form.flag = 0;
+                this.Hide();
+                form.Show();
+            }
+            else if (роль == "Менеджер")
+            {
+                роль_клон.Менеджер = true;
+                Form2 form = new Form2();
+                this.Hide();
+                form.Show();
+            }
+            else if (роль == "Повар")
+            {
+                роль_клон.Повар = true;
+                Form2 form = new Form2();
+                this.Hide();
+                form.Show();
+            }
+            else if (роль == "Упаковщик")
+            {
+                роль_клон.Упаковшик = true;
+                Form2 form = new Form2();
+                this.Hide();
+                form.Show();
             }
         }
 
@@ -113,22 +118,25 @@ namespace Служба_доставки
         {
 
         }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            // Здесь вы устанавливаете автоматический выбор роли "менеджер" в комбо боксе
-            comboBoxRole.SelectedItem = "менеджер";
-
-            // Устанавливаете логин и пароль для менеджера
-            textBoxLogin.Text = "user1";
-            textBoxPassword.Text = "password1";
-
-
-        }
-
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void textBoxLogin_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                textBoxPassword.Select();
+            }
+        }
+
+        private void textBoxPassword_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                button1_Click(sender, e);
+            }
         }
     }
 }

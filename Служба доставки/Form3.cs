@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Служба_доставки
 {
@@ -17,22 +18,18 @@ namespace Служба_доставки
             InitializeComponent();
         }
 
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            Form2 form = new Form2();
-            form.Show();
-
-        }
-
-        private void Form3_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            Application.Exit();
-        }
-
-        private void Form3_Load(object sender, EventArgs e)
-        {
-
+            if (int.TryParse(textBox2.Text, out int number))
+            {
+                Console.WriteLine(number);
+            }
         }
     }
 }

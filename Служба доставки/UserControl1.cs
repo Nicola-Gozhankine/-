@@ -107,7 +107,7 @@ namespace Служба_доставки
             Form5 form5 = new Form5(zacas, zacasCollection, panel_indexs, firstName, lastName, middleName);
 
 
-            form5.Show();
+            form5.ShowDialog();
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -130,7 +130,7 @@ namespace Служба_доставки
             //Статус заказа 
 
             Form2.ActiveForm.Hide();
-            Form8 form8 = new Form8(zacas, zacasCollection, panel_indexs,роль);
+            Form8 form8 = new Form8(zacas, zacasCollection, panel_indexs,Form1.роль_клон);
 
 
             form8.Show();

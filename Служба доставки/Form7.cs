@@ -60,19 +60,18 @@ namespace Служба_доставки
         private void Form7_Load(object sender, EventArgs e)
         {
             button1.Visible = false;
-            button2.Visible = false;
             CollectionБлюдаZacas.Clear();
             CollectionБлюдаZacas = Блюда.CV();
             comboBox1.DataSource = CollectionБлюдаZacas;
             comboBox1.DisplayMember = "Название";
             //   comboBox1.ValueMember = "НомерБлюда";
-            if (роль.Менеджер == true)
+            if (Form1.роль_клон.Менеджер)
             { 
-                button1.Visible= true;
-                button2.Visible= true;
+                button1.Visible = true;
+                button3.Visible = true;
             }
 
-
+            
 
         }
 
@@ -163,6 +162,11 @@ ____________________________________________________________________________
 
             File.AppendAllText(filePath, Environment.NewLine + orderText);
 
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }

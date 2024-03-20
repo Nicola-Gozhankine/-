@@ -37,7 +37,6 @@ namespace Служба_доставки
             if (zacasCollection != null && zacasCollection.Count > 0)
             {
                 lastNumber = zacasCollection[zacasCollection.Count - 1].Number;
-               // lastNumber = zacasCollection[zacasCollection.Count ].Number;
                 n = lastNumber + 1;
                 label2.Text = n.ToString();
                 dateTimePicker1.Format = DateTimePickerFormat.Time;
@@ -47,10 +46,7 @@ namespace Служба_доставки
                 zacas.courierL = new courier();
                 zacas.Number = n ;
 
-            }
-
-            else
-            {
+            } else {
                 n = 0 + 1;
                 label2.Text = n.ToString();
                 dateTimePicker1.Format = DateTimePickerFormat.Time;
@@ -60,12 +56,6 @@ namespace Служба_доставки
                 zacas.courierL = new courier();
                 zacas.Number = n;
             }
-
-            // Загрузка элементов из файла
-            string[] items = File.ReadAllLines("combobox_items.txt");
-            comboBox1.Items.AddRange(items);
-            string[] items1 = File.ReadAllLines("combobox_items1.txt");
-            comboBox2.Items.AddRange(items1);
 
         }
 
@@ -209,6 +199,11 @@ namespace Служба_доставки
             string[] items1 = new string[comboBox2.Items.Count];
             comboBox2.Items.CopyTo(items1, 0);
             File.WriteAllLines("combobox_items1.txt", items1);
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

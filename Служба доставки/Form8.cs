@@ -21,7 +21,7 @@ namespace Служба_доставки
         private Zacas zacas;
         private List<Zacas> zacasCollection;
         private int index;
-        int index1;
+        int index_status;
         private Роль роль;
 
 
@@ -45,24 +45,36 @@ public class DoubleClickButton : Button
             InitializeComponent();
             this.zacas = zacas;
             this.index = index;
-            this.роль =роль;
+            this.роль = роль;
             this.zacasCollection = zacasCollection;
         }
 
         private void Form8_Load(object sender, EventArgs e)
         {
+            if (роль.Менеджер == true)
+            {
+                label4.Text = "Менеджер";
+                comboBox1.Items.Add("передан на кухню");
+                comboBox1.Items.Add("принят на кухне");
+                comboBox1.Items.Add("готовиться");
+                comboBox1.Items.Add("передан на упаковку");
+                comboBox1.Items.Add("упаковывается");
+                comboBox1.Items.Add("упакован");
+                comboBox1.Items.Add("готовиться к выдаче");
+                comboBox1.Items.Add("отдан курьеру");
+            } else if (роль.Повар == true) {
+                label4.Text = "Повар";
+                comboBox1.Items.Add("принят на кухне");
+                comboBox1.Items.Add("готовиться");
+                comboBox1.Items.Add("передан на упаковку");
+            } else if (роль.Упаковшик == true) {
+                label4.Text = "Упаковщик";
+                comboBox1.Items.Add("упаковывается");
+                comboBox1.Items.Add("упакован");
+            }
 
             if (роль.Менеджер==true )
             {
-
-                label4.Text = "Менеджер ";
-                button6.BackColor= Color.DarkSlateGray;
-                button3.BackColor = Color.DarkSlateGray;
-                button4.BackColor = Color.DarkSlateGray;
-                button8.BackColor = Color.DarkSlateGray;
-                button7.BackColor= Color.Yellow;
-                button9.BackColor = Color.Yellow;
-                button1.Visible = false;
                 if (zacasCollection[index].Number == zacasCollection[index].Status_order.num)
                 {
                     label6.Text = zacasCollection[index].Number.ToString();
@@ -74,22 +86,15 @@ public class DoubleClickButton : Button
             if (zacasCollection[index].Number == zacasCollection[index].Status_order.num)
             {
                 label2.Text = zacasCollection[index].Status_order.tecstat;
-
+                for(int i = 0; i < comboBox1.Items.Count; i++)
+                {
+                    if (label2.Text == comboBox1.Items[i].ToString())
+                    {
+                        index = i;
+                    }
+                }
             }
 
-            button7.DoubleClick += Button_DoubleClick;
-            button6.DoubleClick += Button_DoubleClick;
-            button12.DoubleClick += Button_DoubleClick;
-            button2.DoubleClick += Button_DoubleClick;
-            button14.DoubleClick += Button_DoubleClick;
-            button3.DoubleClick += Button_DoubleClick;
-            button4.DoubleClick += Button_DoubleClick;
-            button8.DoubleClick += Button_DoubleClick;
-            button9.DoubleClick += Button_DoubleClick;
-            button10.DoubleClick += Button_DoubleClick;
-            button11.DoubleClick += Button_DoubleClick;
-            button5.DoubleClick += Button_DoubleClick;
-            button1.DoubleClick += Button_DoubleClick;
 
         }
         // Метод для вызова логики обработчика button14_Click
@@ -101,22 +106,6 @@ public class DoubleClickButton : Button
         {
             Button clickedButton = sender as Button;
 
-           
-                if (clickedButton == button7 || clickedButton == button6 || clickedButton == button2 ||
-                    clickedButton == button8 || clickedButton == button9 || clickedButton == button10 ||
-                    clickedButton == button11)
-                {
-                    stat = clickedButton.Text;
-                    label8.Text = stat;
-                    PerformButton14ClickLogic();
-                }
-                else if (clickedButton == button12 || clickedButton == button1 || clickedButton == button5)
-                {
-                    stat = "завершённый(А)";
-                    label8.Text = stat;
-                    PerformButton14ClickLogic();
-                }
-                // Добавьте другие условия для других кнопок, если необходимо
             
         }
 
@@ -124,37 +113,16 @@ public class DoubleClickButton : Button
         {
             Form2 form2 = new Form2();
             form2.Show();
-
         }
 
-        private void button7_Click(object sender, EventArgs e)
-        {
-            stat = button7.Text;
-            label8.Text = stat;
-        }
-
-        private void button6_Click(object sender, EventArgs e)
-        {
-            stat = button6.Text;
-            label8.Text = stat;
-        }
-
-        private void button12_Click(object sender, EventArgs e)
-        {
-            stat = "завершённый";
-            label8.Text = stat;
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            stat = button2.Text;
-            label8.Text=stat;
-        }
+        
 
         private void button14_Click(object sender, EventArgs e)
         {
 
             string VEr;
+            Console.WriteLine(zacas.Status_order.tecstat);
+
             VEr = "Менеджер";
             if (роль.Менеджер == true)
             {
@@ -174,60 +142,21 @@ public class DoubleClickButton : Button
             }
             int orderNumber = zacas.Number; // Номер заказа
             string editor = VEr ; // Редактор
-            string status = stat; // Статус
+
+            string status = stat;
           
 
             string orderText = $"=_+_={ Environment.NewLine }"
             + $"Заказ под номером =+= {orderNumber}" +
                 $"{Environment.NewLine}Редактор =+= {editor}{Environment.NewLine}Статус =+= {status}" +
                 $"{Environment.NewLine}Время =+= {DateTime.Now.ToString("yyyy-MM-dd <> HH:mm:ss")}{Environment.NewLine}=+===";
+
+            Console.WriteLine(orderText);
+
             File.AppendAllText(filePath, Environment.NewLine + orderText);
 
         }
 
-        private void button3_Click(object sender, EventArgs e)
-        {
-            stat = button3.Text;
-            label8.Text = stat;
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-            stat = button4.Text;
-            label8.Text = stat;
-        }
-
-        private void button8_Click(object sender, EventArgs e)
-        {
-            stat = button8.Text;
-            label8.Text = stat;
-        }
-
-        private void button9_Click(object sender, EventArgs e)
-        {
-            stat = button9.Text;
-            label8.Text = stat;
-
-        }
-
-        private void button10_Click(object sender, EventArgs e)
-        {
-            stat = button10.Text;
-            label8.Text = stat;
-        }
-
-        private void button11_Click(object sender, EventArgs e)
-        {
-            stat = button11.Text;
-            label8.Text = stat;
-        }
-
-        private void button5_Click(object sender, EventArgs e)
-        {
-            stat = "завершённый(А)";
-            label8.Text = stat;
-           
-        }
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -235,16 +164,33 @@ public class DoubleClickButton : Button
             label8.Text = stat;
         }
 
-        private void Form8_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
-
-        }
 
         private void button13_Click(object sender, EventArgs e)
         {
             Form10 form10 = new Form10(zacas, zacasCollection, роль);
             form10.Show();
 
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBox1.Text == "Отдан курьеру")
+            {
+                stat = "завершённый(А)";
+            }
+            else
+            {
+                if (comboBox1.SelectedIndex > index)
+                {
+                    stat = comboBox1.Text;
+                }
+                else
+                {
+                    MessageBox.Show("Статус заказа не может иметь ранее имеющийся статус");
+                    comboBox1.Text = "";
+                }
+            }
+            label8.Text = stat;
         }
     }
 }
