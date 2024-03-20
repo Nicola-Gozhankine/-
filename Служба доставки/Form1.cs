@@ -138,5 +138,13 @@ namespace Служба_доставки
                 button1_Click(sender, e);
             }
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            роль_клон.Менеджер = true;
+            Form2 form = new Form2();
+            this.Hide();
+            form.Show();
+        }
     }
 }
