@@ -23,7 +23,7 @@ namespace Служба_доставки
         private int index;
         int index_status;
         private Роль роль;
-
+        int zapret=-1;
 
 
 public class DoubleClickButton : Button
@@ -90,7 +90,7 @@ public class DoubleClickButton : Button
                 {
                     if (label2.Text == comboBox1.Items[i].ToString())
                     {
-                        index = i;
+                        zapret = i;
                     }
                 }
             }
@@ -180,7 +180,7 @@ public class DoubleClickButton : Button
             }
             else
             {
-                if (comboBox1.SelectedIndex > index)
+                if (comboBox1.SelectedIndex >zapret)
                 {
                     stat = comboBox1.Text;
                 }

@@ -24,7 +24,7 @@ namespace Служба_доставки
         public  List<Блюда> CollectionБлюдаZacas = new List<Блюда>();
         string filePath = "Zacasi.txt"; // замените на реальный путь к вашему файлу
         string spzac;
-
+        int raz =0;
 
         public Form7(Zacas zacas, List<Zacas> zacasCollection)
         {
@@ -116,7 +116,7 @@ namespace Служба_доставки
             {
                 MessageBox.Show("Нулевое количество ");
             }
-            else
+            else 
             {
 
                 // Формируем строку для добавления в листбокс
@@ -138,23 +138,31 @@ namespace Служба_доставки
             }
             else
             {
-               
-                zacas.заказчик.полный_список_заказа = spzac;
-                // Генерация динамических данных
-                Random rnd = new Random();
-                int orderNumber = zacas.Number;
+                if ( raz>=1)
+                {
+                    raz++;
+                    MessageBox.Show("Заказ сформирован нажимая на этот раз ничего не прозойтет Это уже  "+raz + " нажатие"  );
+                }
+                if (raz==0)
+                { 
+                    raz = 1;
 
-                DateTime acceptTime = DateTime.Now; // Текущее время как время принятия заказа
-                string editor = "Менеджер";
-                string status = "получен";
-                string client = zacas.заказчик.полное_имя;
-                string dishes = zacas.заказчик.полный_список_заказа;
-                string courier = zacas.courierL.Имя_целиком;
-                DateTime courierArrivalTime = zacas.courierL.Время_брибытия; // Время прибытия курьера через 1.5 часа
-                string videoAddress = "// Тут ничего нет но в конце будет";
+                    zacas.заказчик.полный_список_заказа = spzac;
+                    // Генерация динамических данных
+                    Random rnd = new Random();
+                    int orderNumber = zacas.Number;
 
-                // Формирование текста заказа с динамическими данными
-                string orderText = $@"******************************************************************
+                    DateTime acceptTime = DateTime.Now; // Текущее время как время принятия заказа
+                    string editor = "Менеджер";
+                    string status = "получен";
+                    string client = zacas.заказчик.полное_имя;
+                    string dishes = zacas.заказчик.полный_список_заказа;
+                    string courier = zacas.courierL.Имя_целиком;
+                    DateTime courierArrivalTime = zacas.courierL.Время_брибытия; // Время прибытия курьера через 1.5 часа
+                    string videoAddress = "// Тут ничего нет но в конце будет";
+
+                    // Формирование текста заказа с динамическими данными
+                    string orderText = $@"******************************************************************
 Заказ под номером =+= {orderNumber}
 Был принят =+= {acceptTime:HH:mm:ss} 
 Редактор =+= {editor}
@@ -168,8 +176,9 @@ ____________________________________________________________________________
 ";
 
 
-                File.AppendAllText(filePath, Environment.NewLine + orderText);
+                    File.AppendAllText(filePath, Environment.NewLine + orderText);
 
+                }
             }
         }
         private void button3_Click(object sender, EventArgs e)
