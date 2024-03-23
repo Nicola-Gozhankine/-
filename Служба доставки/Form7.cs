@@ -68,7 +68,7 @@ namespace Служба_доставки
             if (Form1.роль_клон.Менеджер)
             { 
                 button1.Visible = true;
-                button3.Visible = true;
+              //  button3.Visible = true;
             }
 
             
@@ -177,6 +177,7 @@ ____________________________________________________________________________
 
 
                     File.AppendAllText(filePath, Environment.NewLine + orderText);
+                    Form7_FormClosed(null,null );
 
                 }
             }

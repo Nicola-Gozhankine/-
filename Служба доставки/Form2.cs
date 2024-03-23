@@ -62,6 +62,7 @@ namespace Служба_доставки
 
         public void Form2_Load(object sender, EventArgs e)
         {
+            textBox1.Visible = false;
             if (Form1.роль_клон.Менеджер) this.Text = "Менеджер";
             else if (Form1.роль_клон.Повар) this.Text = "Повар";
             else if (Form1.роль_клон.Упаковшик) this.Text = "Упаковщик";
